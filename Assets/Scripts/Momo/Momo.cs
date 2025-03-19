@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Tilemaps;
 
 public class Momo : MonoBehaviour
 {
@@ -7,6 +8,8 @@ public class Momo : MonoBehaviour
     [SerializeField] private float moveTime = 0.2f;  // Time to complete movement
     [SerializeField] private GameObject deathSprite;
     [SerializeField] private Vector3 respawnPoint; // Momo's current reset position
+    [SerializeField] private GameObject homeSpritePrefab; // sprite we want to place on the home once we reach it
+    [SerializeField] private Tilemap homeTilemap; // the tile map for the homes
     private Rigidbody2D rb;
     private Vector2 moveDirection;
     private bool isMoving = false; // Prevent multiple inputs before finishing move
@@ -32,6 +35,7 @@ public class Momo : MonoBehaviour
             Vector2 targetPosition = (Vector2)transform.position + moveDirection * moveDistance;
 
             Collider2D platform = Physics2D.OverlapBox(targetPosition, Vector2.zero, 0f, LayerMask.GetMask("Platform"));
+            Collider2D projectile = Physics2D.OverlapBox(targetPosition, Vector2.zero, 0f, LayerMask.GetMask("Projectile"));
             Collider2D abyss = Physics2D.OverlapBox(targetPosition, Vector2.zero, 0f, LayerMask.GetMask("Abyss"));
             Collider2D home = Physics2D.OverlapBox(targetPosition, Vector2.zero, 0f, LayerMask.GetMask("Home")); //These are where momo is trying to get to in order to progress
             Collider2D ground = Physics2D.OverlapBox(targetPosition, Vector2.zero, 0f, LayerMask.GetMask("Ground")); //non moving ground that momo is safe on
@@ -42,9 +46,10 @@ public class Momo : MonoBehaviour
                 transform.SetParent(null);
             }
             //some logic here for when momo sucessfully gets to a home
-            // if (home != null) {
-            //     Gamemanager.instance.fillHome or something like this;
-            // } 
+            if (home != null && projectile == null) {
+                ReachHome(targetPosition);
+                return;
+            } 
             // Momo dies when he lands in the abyss (loses a life and gets reset). If he is flying (using air ability we dont call this... which will get added later)
             if (abyss != null && platform == null && ground == null && home == null)
             {
@@ -135,6 +140,39 @@ public class Momo : MonoBehaviour
         //Reset Momo's abilities here in the future
 
         //Disable control of this script so momo cant move during death
+        enabled = false;
+
+        //Disable momo so he cannot do anything while dead
+
+        gameObject.SetActive(false);
+
+        //Call our death function in the game manager once its set up
+        Invoke(nameof(Respawn), 1f);
+    }
+
+    //Called when momo reaches a home
+    private void ReachHome(Vector2 target){
+        StopAllCoroutines();    
+        moveDirection = Vector2.zero;  //reset movement
+        isMoving = true; // prevent movement bug
+        animator.SetBool("isJumping", false); //exit jump animation
+        transform.SetParent(null);
+
+        //set Home Sprite to the location
+
+         // find the tile center using Tilemap
+        if (homeTilemap != null && homeSpritePrefab != null)
+        {
+            Vector3Int cellPosition = homeTilemap.WorldToCell(target); // convert world position to tilemap cell
+            Vector3 tileCenter = homeTilemap.GetCellCenterWorld(cellPosition); // get the center of the tile
+            tileCenter.y += 0.25f; // Raise it by 0.25 units to center the momo sprite in the home tile
+            Instantiate(homeSpritePrefab, tileCenter, Quaternion.identity);
+        }
+        //Increment home score here in the future once game manager is set up
+
+        //Reset Momo's abilities here in the future
+
+        //Disable control of this script so momo cant move 
         enabled = false;
 
         //Disable momo so he cannot do anything while dead

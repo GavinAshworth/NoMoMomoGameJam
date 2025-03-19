@@ -4652,7 +4652,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -467989281
-  m_SortingLayer: 5
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -5922,6 +5922,8 @@ MonoBehaviour:
   moveTime: 0.2
   deathSprite: {fileID: 2197210044772608407, guid: ee0d02d51b709c647a7ce05be79b860f, type: 3}
   respawnPoint: {x: 0, y: -6, z: 0}
+  homeSpritePrefab: {fileID: 5520234625285459964, guid: 02548942943c0a84b801906cf84ba3fc, type: 3}
+  homeTilemap: {fileID: 14086029}
 --- !u!114 &1734716576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6109,7 +6111,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 389190771
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 8302083354490947181, guid: 14d41045543217c4d978c29d532f6b97, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

@@ -51,11 +51,11 @@ TagManager:
   - name: Projectile
     uniqueID: 2701764573
     locked: 0
-  - name: Player
-    uniqueID: 389190771
-    locked: 0
   - name: Boundary
     uniqueID: 3826978015
+    locked: 0
+  - name: Player
+    uniqueID: 389190771
     locked: 0
   - name: UI
     uniqueID: 865846487
