@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Moving Platform
+  - Crystal
   layers:
   - Default
   - TransparentFX
@@ -48,14 +49,17 @@ TagManager:
   - name: Ground
     uniqueID: 1511645753
     locked: 0
+  - name: Crystals
+    uniqueID: 3157642015
+    locked: 0
+  - name: Player
+    uniqueID: 389190771
+    locked: 0
   - name: Projectile
     uniqueID: 2701764573
     locked: 0
   - name: Boundary
     uniqueID: 3826978015
-    locked: 0
-  - name: Player
-    uniqueID: 389190771
     locked: 0
   - name: UI
     uniqueID: 865846487
