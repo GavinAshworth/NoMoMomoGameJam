@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4ffd78d543ce68d46960c0c8e8816cc5
+guid: b65d91e6cc3c73142915f11a8ea686ec
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -155,161 +155,73 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Basic Tiles_0
+      name: Basic Tiles 1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 288
-        width: 32
+        width: 96
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 796884d40328897f0800000000000000
-      internalID: -605591005914691945
+      spriteID: 0c7a40d35e59a9a4d96d31c30e4342f5
+      internalID: 1389187628
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Basic Tiles_1
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 288
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 209f077a09cc0c9f0800000000000000
-      internalID: -450135041080493822
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Basic Tiles_2
+      name: Basic Tiles 1_1
       rect:
         serializedVersion: 2
         x: 0
         y: 256
-        width: 32
+        width: 96
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: e36f674fb98cf4140800000000000000
-      internalID: 4706200707772380734
+      spriteID: 42be1f7b480060f41ad451a35092c022
+      internalID: 1020077176
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Basic Tiles_3
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 256
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8851812f4ee8e6330800000000000000
-      internalID: 3706056657337849224
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Basic Tiles_4
+      name: Basic Tiles 1_2
       rect:
         serializedVersion: 2
         x: 96
         y: 256
-        width: 32
+        width: 96
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: daddf5697f6a2d4e0800000000000000
-      internalID: -1958319305642746451
+      spriteID: 5880f9970b284d84192e7e99c70cf813
+      internalID: -988691648
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Basic Tiles_5
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 256
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 92c161c7fb31a1550800000000000000
-      internalID: 6132235555759856681
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Basic Tiles_6
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 256
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 245a192c401635440800000000000000
-      internalID: 4923385490718172482
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Basic Tiles_7
+      name: Basic Tiles 1_3
       rect:
         serializedVersion: 2
         x: 192
@@ -317,81 +229,37 @@ TextureImporter:
         width: 96
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: ce0f6363d4d916e90800000000000000
-      internalID: -7034168188028391188
+      spriteID: abfb7b59ef4affa4a9e7233798b502f4
+      internalID: -2057569721
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Basic Tiles_8
-      rect:
-        serializedVersion: 2
-        x: 224
-        y: 256
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 20ee428a1008d5040800000000000000
-      internalID: 4638003935865794050
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Basic Tiles_9
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 256
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 92e8ab8b1cd92f230800000000000000
-      internalID: 3671170101613858345
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Basic Tiles_10
+      name: Basic Tiles 1_4
       rect:
         serializedVersion: 2
         x: 96
         y: 224
-        width: 32
+        width: 96
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 19237bf715cd1e380800000000000000
-      internalID: -8943625142387920239
+      spriteID: fc41cbd194effda4698a1e46830c2dec
+      internalID: -1864644740
       vertices: []
       indices: 
       edges: []
@@ -410,17 +278,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Basic Tiles_0: -605591005914691945
-      Basic Tiles_1: -450135041080493822
-      Basic Tiles_10: -8943625142387920239
-      Basic Tiles_2: 4706200707772380734
-      Basic Tiles_3: 3706056657337849224
-      Basic Tiles_4: -1958319305642746451
-      Basic Tiles_5: 6132235555759856681
-      Basic Tiles_6: 4923385490718172482
-      Basic Tiles_7: -7034168188028391188
-      Basic Tiles_8: 4638003935865794050
-      Basic Tiles_9: 3671170101613858345
+      Basic Tiles 1_0: 1389187628
+      Basic Tiles 1_1: 1020077176
+      Basic Tiles 1_2: -988691648
+      Basic Tiles 1_3: -2057569721
+      Basic Tiles 1_4: -1864644740
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
