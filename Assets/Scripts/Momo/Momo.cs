@@ -35,6 +35,7 @@ public class Momo : MonoBehaviour
             Vector2 targetPosition = (Vector2)transform.position + moveDirection * moveDistance;
 
             Collider2D platform = Physics2D.OverlapBox(targetPosition, Vector2.zero, 0f, LayerMask.GetMask("Platform"));
+            Collider2D cantGoHere = Physics2D.OverlapBox(targetPosition, Vector2.zero, 0f, LayerMask.GetMask("CantGoHere"));
             Collider2D projectile = Physics2D.OverlapBox(targetPosition, Vector2.zero, 0f, LayerMask.GetMask("Projectile"));
             Collider2D abyss = Physics2D.OverlapBox(targetPosition, Vector2.zero, 0f, LayerMask.GetMask("Abyss"));
             Collider2D home = Physics2D.OverlapBox(targetPosition, Vector2.zero, 0f, LayerMask.GetMask("Home")); //These are where momo is trying to get to in order to progress
@@ -56,8 +57,12 @@ public class Momo : MonoBehaviour
                 //Call our death function. Currently everything just does 1 damage for now
                 Death(targetPosition, 1);
             }else{
+                if(cantGoHere == null){ //if we are not jumping out of frame
                 StopAllCoroutines();
                 StartCoroutine(MoveToPosition(targetPosition)); // This allows us to move smoothly instead of just teleporting, looks nicer
+                }else{
+                    animator.SetBool("isJumping", false); //Enter jumping animation
+                }  
             }
         }
     }
@@ -65,7 +70,6 @@ public class Momo : MonoBehaviour
     public void Move(InputAction.CallbackContext context)
     {
         if (!context.performed || isMoving || isDead){
-            Debug.Log("dead");
             return; // Ignore input while moving or dead
         } 
 
@@ -168,7 +172,7 @@ public class Momo : MonoBehaviour
             tileCenter.y += 0.25f; // Raise it by 0.25 units to center the momo sprite in the home tile
             Instantiate(homeSpritePrefab, tileCenter, Quaternion.identity);
         }
-        //Increment home score here in the future once game manager is set up
+        //Increment home score here in the future once game manager is set up (once home score gets to 5 we move to next)
 
         //Reset Momo's abilities here in the future
 
@@ -210,6 +214,14 @@ public class Momo : MonoBehaviour
         bool isProjectile = collision.gameObject.layer == LayerMask.NameToLayer("Projectile");
         if(isProjectile /*&& !abilities.GetIsShielded()*/) { //in future when rock ability is implemented it will block projectiles
             Death(transform.position,1);
+            return;
+        }
+
+        //This is for when momo gets hit by a projectile
+        bool isDeathWall = collision.gameObject.layer == LayerMask.NameToLayer("DeathWall");
+        if(isDeathWall){
+            Death(transform.position,1);
+            return;
         }
     }
 }
