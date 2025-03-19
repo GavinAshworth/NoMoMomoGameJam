@@ -152,4 +152,13 @@ public class Momo : MonoBehaviour
         //spawn momo at respawn point
         transform.position = respawnPoint;
     }
+
+     private void OnTriggerEnter2D(Collider2D collision){
+        //This is for when momo gets hit by a projectile
+        bool isProjectile = collision.gameObject.layer == LayerMask.NameToLayer("Projectile");
+        Debug.Log(isProjectile);
+        if(isProjectile /*&& !abilities.GetIsShielded()*/) { //in future when rock ability is implemented it will block projectiles
+            Death(transform.position,1);
+        }
+    }
 }
