@@ -16,7 +16,7 @@ TagManager:
   - Ground
   - Home
   - Platform
-  - 
+  - Projectile
   - 
   - 
   - 
@@ -47,6 +47,9 @@ TagManager:
     locked: 0
   - name: Ground
     uniqueID: 1511645753
+    locked: 0
+  - name: Projectile
+    uniqueID: 2701764573
     locked: 0
   - name: Boundary
     uniqueID: 3826978015
