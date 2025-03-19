@@ -14,6 +14,7 @@ public class Momo : MonoBehaviour
     private SpriteRenderer spriteRenderer; //Using this to flip the sprite when moving to the left as I didnt make a move left animation
     private float lastInputX;  //These keep track of where momo should be facing
     private float lastInputY;
+    private bool isDead;
 
     private void Start()
     {
@@ -58,7 +59,10 @@ public class Momo : MonoBehaviour
 
     public void Move(InputAction.CallbackContext context)
     {
-        if (!context.performed || isMoving) return; // Ignore input while moving
+        if (!context.performed || isMoving || isDead){
+            Debug.Log("dead");
+            return; // Ignore input while moving or dead
+        } 
 
         animator.SetBool("isJumping", true); //Enter jumping animation
 
@@ -115,7 +119,8 @@ public class Momo : MonoBehaviour
     public void Death(Vector2 target, int damage){
         StopAllCoroutines();    
         moveDirection = Vector2.zero;  //reset movement
-        isMoving = false; // we arent moving anymore
+        isMoving = true; // prevent movement bug
+        isDead = true; //momo is currently dead
         animator.SetBool("isJumping", false); //exit jump animation
         transform.SetParent(null);
         //Show hurt sprite at the destination tile
@@ -128,6 +133,7 @@ public class Momo : MonoBehaviour
         }
 
         //Reset Momo's abilities here in the future
+
         //Disable control of this script so momo cant move during death
         enabled = false;
 
@@ -142,21 +148,28 @@ public class Momo : MonoBehaviour
     public void Respawn(){
         //This is called by our game manager after death, if we have more lives left. Right now we just call it in this file
         StopAllCoroutines(); 
-
+        isMoving = false; //reset movement
         //Re enable momo
         gameObject.SetActive(true);
 
-        //re-enable control
-        enabled = true;
+        //Re enable control
+        Invoke(nameof(reEnableControl), 0.25f);
 
         //spawn momo at respawn point
         transform.position = respawnPoint;
     }
 
+    private void reEnableControl(){
+        //re-enable control
+        enabled = true;
+
+        //Set momo to alive
+        isDead = false;
+    }
+
      private void OnTriggerEnter2D(Collider2D collision){
         //This is for when momo gets hit by a projectile
         bool isProjectile = collision.gameObject.layer == LayerMask.NameToLayer("Projectile");
-        Debug.Log(isProjectile);
         if(isProjectile /*&& !abilities.GetIsShielded()*/) { //in future when rock ability is implemented it will block projectiles
             Death(transform.position,1);
         }
