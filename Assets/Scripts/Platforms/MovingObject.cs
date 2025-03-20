@@ -43,9 +43,9 @@ public class MovingObject : MonoBehaviour
     }
 
     //This will be for when the earth ability and projectiles are set up
-    // private void OnTriggerEnter2D(Collider2D collision){
-    //     if(collision.CompareTag("Earth Ability") && isProjectile){
-    //         transform.position = spawnPoint.position;
-    //     }
-    // }
+    private void OnTriggerEnter2D(Collider2D collision){
+        if(collision.CompareTag("Earth Ability") && isProjectile){
+            transform.position = spawnPoint.position;
+        }
+    }
 }
