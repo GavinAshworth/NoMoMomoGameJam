@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6340918602383351349}
   - component: {fileID: 5939220505665053793}
   - component: {fileID: 1048334228984844799}
+  - component: {fileID: -4603748375538617035}
   m_Layer: 0
   m_Name: Momo
   m_TagString: Untagged
@@ -79,7 +80,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 389190771
-  m_SortingLayer: 5
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 8302083354490947181, guid: 14d41045543217c4d978c29d532f6b97, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -232,6 +233,70 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 9caa3d8a-6b2f-4e8e-8bad-6ede561bd9be
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -4603748375538617035}
+        m_TargetAssemblyTypeName: Abilities, Assembly-CSharp
+        m_MethodName: OnAirAbility
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 7a299255-36af-49ff-b4bb-dc73f190e0ec
+    m_ActionName: 'Abilities/Air[/Keyboard/7]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -4603748375538617035}
+        m_TargetAssemblyTypeName: Abilities, Assembly-CSharp
+        m_MethodName: OnWaterAbility
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 0607cd55-e155-4a3c-b308-87b8902dbce2
+    m_ActionName: 'Abilities/Water[/Keyboard/8]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -4603748375538617035}
+        m_TargetAssemblyTypeName: Abilities, Assembly-CSharp
+        m_MethodName: OnEarthAbility
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 391d0804-80aa-4aea-b5a6-f6ee5c03b642
+    m_ActionName: 'Abilities/Earth[/Keyboard/9]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -4603748375538617035}
+        m_TargetAssemblyTypeName: Abilities, Assembly-CSharp
+        m_MethodName: OnFireAbility
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 5f73d51c-3f80-4986-be71-c51d8a5a8309
+    m_ActionName: 'Abilities/Fire[/Keyboard/0]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -323,3 +388,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.64, y: 0.68}
   m_EdgeRadius: 0
+--- !u!114 &-4603748375538617035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1652529745256764096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6ca7bce2315cce489e545063fb4c58c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  airEffectPrefab: {fileID: 7919079112485588453, guid: 8d72fb539bdb5f747888e32eec6aa468, type: 3}
+  waterEffectPrefab: {fileID: 4817943774017495170, guid: 084b87d0074743145a59039ee251cd5c, type: 3}
+  earthEffectPrefab: {fileID: 1809240174812550715, guid: ac52f70dfce49b24c983f5b7e27127a1, type: 3}
+  fireEffectPrefab: {fileID: 8739921917939161790, guid: 2bc41d9de37e3154f89498082de0f2dd, type: 3}

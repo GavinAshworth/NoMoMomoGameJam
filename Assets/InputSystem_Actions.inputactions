@@ -990,6 +990,94 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Abilities",
+            "id": "9b62d093-d2b4-406d-8b72-81b043e162fb",
+            "actions": [
+                {
+                    "name": "Air",
+                    "type": "Button",
+                    "id": "7a299255-36af-49ff-b4bb-dc73f190e0ec",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Water",
+                    "type": "Button",
+                    "id": "0607cd55-e155-4a3c-b308-87b8902dbce2",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Earth",
+                    "type": "Button",
+                    "id": "391d0804-80aa-4aea-b5a6-f6ee5c03b642",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Fire",
+                    "type": "Button",
+                    "id": "5f73d51c-3f80-4986-be71-c51d8a5a8309",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "fdea52e7-20c2-4607-b5aa-936c12792f81",
+                    "path": "<Keyboard>/7",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Air",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d92f251a-249e-44fb-8a1f-55b053a4780a",
+                    "path": "<Keyboard>/8",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Water",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1e21c711-371a-42af-b82f-267cc53bd135",
+                    "path": "<Keyboard>/9",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Earth",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "19fcbe4f-ba28-4b8c-8e7e-7b5d7bdb1c86",
+                    "path": "<Keyboard>/0",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

@@ -11,6 +11,7 @@ public class Momo : MonoBehaviour
     [SerializeField] private GameObject homeSpritePrefab; // sprite we want to place on the home once we reach it
     [SerializeField] private Tilemap homeTilemap; // the tile map for the homes
     private Rigidbody2D rb;
+    private float constMoveTime;
     private Vector2 moveDirection;
     private bool isMoving = false; // Prevent multiple inputs before finishing move
     private Animator animator; //Our animator used for sprite animations
@@ -18,12 +19,15 @@ public class Momo : MonoBehaviour
     private float lastInputX;  //These keep track of where momo should be facing
     private float lastInputY;
     private bool isDead;
+    private Abilities abilities;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        abilities = GetComponent<Abilities>();
+        constMoveTime = moveTime;
     }
 
     private void Update()
@@ -32,6 +36,12 @@ public class Momo : MonoBehaviour
 
         if (moveDirection != Vector2.zero) //When user moves
         {
+            //If momo is using the air ability he goes twice as fast
+            if(abilities.GetIsFlying()){
+                moveTime = constMoveTime / 2f; //double momo's speed
+            }else{
+                moveTime = constMoveTime; //reset his speed
+            }
             Vector2 targetPosition = (Vector2)transform.position + moveDirection * moveDistance;
 
             Collider2D platform = Physics2D.OverlapBox(targetPosition, Vector2.zero, 0f, LayerMask.GetMask("Platform"));
@@ -142,7 +152,7 @@ public class Momo : MonoBehaviour
         }
 
         //Reset Momo's abilities here in the future
-
+        abilities.StopAbility();
         //Disable control of this script so momo cant move during death
         enabled = false;
 
@@ -175,7 +185,7 @@ public class Momo : MonoBehaviour
         //Increment home score here in the future once game manager is set up (once home score gets to 5 we move to next)
 
         //Reset Momo's abilities here in the future
-
+        abilities.StopAbility();
         //Disable control of this script so momo cant move 
         enabled = false;
 
@@ -212,14 +222,14 @@ public class Momo : MonoBehaviour
      private void OnTriggerEnter2D(Collider2D collision){
         //This is for when momo gets hit by a projectile
         bool isProjectile = collision.gameObject.layer == LayerMask.NameToLayer("Projectile");
-        if(isProjectile /*&& !abilities.GetIsShielded()*/) { //in future when rock ability is implemented it will block projectiles
+        if(isProjectile && !abilities.GetIsShielded()) { //IF momo gets hit by a projectile and he is not shielded by the rock ability he dies
             Death(transform.position,1);
             return;
         }
 
-        //This is for when momo gets hit by a projectile
+        //This is for when momo tries to escape the game boundaries
         bool isDeathWall = collision.gameObject.layer == LayerMask.NameToLayer("DeathWall");
-        if(isDeathWall){
+        if(isDeathWall && !abilities.GetIsFire()){ //this prevents bug where fire collider triggered death
             Death(transform.position,1);
             return;
         }
