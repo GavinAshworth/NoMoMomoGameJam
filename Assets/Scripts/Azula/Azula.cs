@@ -13,8 +13,6 @@ public class Azula : MonoBehaviour
 
     [SerializeField] GameObject fireballPrefab;
     [SerializeField] GameObject lightningPrefab;
-    [SerializeField] int numberOfLightningStrikes = 5; // Number of lightning strikes to spawn
-    [SerializeField] float spawnRadius = 5f; // Radius around Momo to spawn lightning strikes
     [SerializeField] Tilemap pathToCrystals; //This is the path that allows momo to get to crystals
     [SerializeField] GameObject momo;
     [SerializeField] int poolSize = 100;
@@ -89,31 +87,50 @@ public class Azula : MonoBehaviour
                 // Wait for the attack to finish
                 yield return new WaitUntil(() => !isAttacking);
 
-                // Small break between attacks
-                yield return new WaitForSeconds(timeBetweenAttacks);
+                // Small break between attacks except for last one
+                if(attackCount != attacksPerCycle -1){
+                    yield return new WaitForSeconds(timeBetweenAttacks);
+                }
             }
 
             // Break between attack cycles (this is when the player can get to the crystals and hurt azula)
             pathToCrystals.gameObject.SetActive(true);
+            anim.SetBool("IsResting", true);
             yield return new WaitForSeconds(timeBetweenCycles);
             pathToCrystals.gameObject.SetActive(false);
+            anim.SetBool("IsResting", false);
         }
     }
 
     // Animation Event - Lightning Strike
-    public void OnLightningStrike()
-{
-    if (!isAlive || isHurt) return;
-    Debug.Log("Lightning Strike Triggered!");
-
-    for (int i = 0; i < numberOfLightningStrikes; i++)
+        public void OnLightningStrike()
     {
-        // Generate a random position within the spawn radius
-        Vector2 randomOffset = Random.insideUnitCircle * spawnRadius;
-        Vector3 spawnPosition = momo.transform.position + new Vector3(randomOffset.x, randomOffset.y, 0);
+        if (!isAlive || isHurt) return;
+        Debug.Log("Lightning Strike Triggered!");
 
-        // Spawn our lightning attack at the random position's
+        // Calculate the number of lightning strikes based on lives lost
+        int totalStrikes = 1 + (4 - lives) * 2; // 1 strike at 0 lives lost, 3 at 1 life lost, etc.
+
+        // Start the lightning strike sequence
+        StartCoroutine(PerformLightningStrikes(totalStrikes));
+    }
+
+    private IEnumerator PerformLightningStrikes(int totalStrikes)
+{
+    for (int i = 0; i < totalStrikes; i++)
+    {
+        // Calculate a random offset: -0.5 (left), 0 (center), or 0.5 (right)
+        float randomOffset = Random.Range(-1, 2) * 1f; //(makes it so the strikes are a little random and player has to react)
+        // First strike is always on top of player
+        if(i == 0){
+            randomOffset = 0f;
+        }
+        // Spawn a lightning strike with the random offset
+        Vector3 spawnPosition = momo.transform.position + new Vector3(randomOffset, 0, 0);
         GameObject lightning = Instantiate(lightningPrefab, spawnPosition, Quaternion.identity);
+
+        // Wait for a short delay before the next strike
+        yield return new WaitForSeconds(0.5f);
     }
 }
 
@@ -122,7 +139,7 @@ public class Azula : MonoBehaviour
     public void OnFireBarrageEvent()
     {
         if (!isAlive || isHurt) return;
-
+        fireballSpeed = 7f + (4 - lives) * 2; // Fireballs get faster as Azula loses lives
         int totalFireballs = 1 + (4 - lives) * 2; // Base fireball + two extra per lost life
         float coneAngle = 30f + (4 - lives) * 15; //cone gets slightly bigger as azula loses lives
         float angleStep = (totalFireballs > 1) ? coneAngle / (totalFireballs - 1) : 0; // Handle division by zero
@@ -197,7 +214,10 @@ public class Azula : MonoBehaviour
     public void TakeDamage()
     {
         lives--;
-        anim.SetTrigger("Hurt");
+        if(lives > 0){
+          anim.SetTrigger("Hurt");
+          anim.SetBool("IsResting", false);  
+        }
         isHurt = true;
 
         if (lives <= 0)

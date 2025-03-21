@@ -5676,8 +5676,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireballPrefab: {fileID: 1067741581393851505, guid: e2f79ffef6f7e644b9bca5b94795596c, type: 3}
   lightningPrefab: {fileID: 1563080504655166044, guid: f8e51fe450e3fe14b97ed4c544436c3c, type: 3}
-  numberOfLightningStrikes: 5
-  spawnRadius: 3
   pathToCrystals: {fileID: 1721809272}
   momo: {fileID: 997271364}
   poolSize: 50
