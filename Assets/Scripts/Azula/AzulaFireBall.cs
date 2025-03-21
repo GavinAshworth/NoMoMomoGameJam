@@ -30,7 +30,7 @@ public class AzulaFireBall : MonoBehaviour
         }
     }
 
-    private void RotateTowardsDirection() //makes sure the fireball is pointed towards where its going
+    private void RotateTowardsDirection() // Makes sure the fireball is pointed towards where its going
     {
         // Calculate the angle in degrees based on the direction
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;

@@ -23,7 +23,7 @@ public class Azula : MonoBehaviour
     // Attack cycle settings
     [SerializeField] private int attacksPerCycle = 5;
     [SerializeField] private float timeBetweenAttacks = 2f;
-    [SerializeField] private float timeBetweenCycles = 5f;
+    [SerializeField] private float timeBetweenCycles = 7f;
 
     void Start()
     {
