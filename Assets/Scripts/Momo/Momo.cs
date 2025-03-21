@@ -61,7 +61,7 @@ public class Momo : MonoBehaviour
                 ReachHome(targetPosition);
                 return;
             } 
-            // Momo dies when he lands in the abyss (loses a life and gets reset). If he is flying (using air ability we dont call this... which will get added later)
+            // Momo dies when he lands in the abyss (loses a life and gets reset). 
             if (abyss != null && platform == null && ground == null && home == null)
             {
                 //Call our death function. Currently everything just does 1 damage for now
@@ -71,7 +71,7 @@ public class Momo : MonoBehaviour
                 StopAllCoroutines();
                 StartCoroutine(MoveToPosition(targetPosition)); // This allows us to move smoothly instead of just teleporting, looks nicer
                 }else{
-                    animator.SetBool("isJumping", false); //Enter jumping animation
+                    animator.SetBool("isJumping", false); //Exit jumping animation
                 }  
             }
         }
