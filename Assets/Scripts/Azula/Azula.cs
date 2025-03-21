@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Tilemaps;
 
 public class Azula : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class Azula : MonoBehaviour
     [SerializeField] GameObject lightningPrefab;
     [SerializeField] int numberOfLightningStrikes = 5; // Number of lightning strikes to spawn
     [SerializeField] float spawnRadius = 5f; // Radius around Momo to spawn lightning strikes
+    [SerializeField] Tilemap pathToCrystals; //This is the path that allows momo to get to crystals
     [SerializeField] GameObject momo;
     [SerializeField] int poolSize = 100;
     [SerializeField] float fireballSpeed = 5f;
@@ -37,6 +39,8 @@ public class Azula : MonoBehaviour
             fireballPool.Add(fireball);
         }
 
+        //Remove path to crystals at the start
+        pathToCrystals.gameObject.SetActive(false);
         StartCoroutine(BossBehavior());
     }
 
@@ -89,8 +93,10 @@ public class Azula : MonoBehaviour
                 yield return new WaitForSeconds(timeBetweenAttacks);
             }
 
-            // Break between attack cycles
+            // Break between attack cycles (this is when the player can get to the crystals and hurt azula)
+            pathToCrystals.gameObject.SetActive(true);
             yield return new WaitForSeconds(timeBetweenCycles);
+            pathToCrystals.gameObject.SetActive(false);
         }
     }
 

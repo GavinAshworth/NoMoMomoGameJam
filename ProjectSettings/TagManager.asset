@@ -8,6 +8,7 @@ TagManager:
   - Crystal
   - Fire Ability
   - Earth Ability
+  - Azula
   layers:
   - Default
   - TransparentFX
@@ -54,11 +55,11 @@ TagManager:
   - name: Crystals
     uniqueID: 3157642015
     locked: 0
-  - name: Player
-    uniqueID: 389190771
-    locked: 0
   - name: Projectile
     uniqueID: 2701764573
+    locked: 0
+  - name: Player
+    uniqueID: 389190771
     locked: 0
   - name: Boundary
     uniqueID: 3826978015
