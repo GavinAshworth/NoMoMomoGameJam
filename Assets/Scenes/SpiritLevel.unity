@@ -1616,6 +1616,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3331230136846448358, guid: 9375a6dc69247214e8985f68ea5c7627, type: 3}
   m_PrefabInstance: {fileID: 2054520725}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &997271364 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1652529745256764096, guid: 77502349c8f9b07489a5ce5bac229c7e, type: 3}
+  m_PrefabInstance: {fileID: 7680321247040749205}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1153632362
 GameObject:
   m_ObjectHideFlags: 0
@@ -5604,6 +5609,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 398734272}
     m_Modifications:
+    - target: {fileID: -5562607831940526431, guid: 9375a6dc69247214e8985f68ea5c7627, type: 3}
+      propertyPath: azula
+      value: 
+      objectReference: {fileID: 1583626095}
     - target: {fileID: 496368792951975106, guid: 9375a6dc69247214e8985f68ea5c7627, type: 3}
       propertyPath: InitialModule.startLifetime.scalar
       value: 6.5
@@ -5671,6 +5680,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1583626093}
   - component: {fileID: 1583626092}
+  - component: {fileID: 1583626094}
+  - component: {fileID: 1583626095}
   m_Layer: 0
   m_Name: Azula
   m_TagString: Untagged
@@ -5748,6 +5759,47 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1583626094
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1583626091}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3e225357542e14f419c5c4327ee8f335, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1583626095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1583626091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 762656c1fd2552440a3391fe0289ebfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireballPrefab: {fileID: 1067741581393851505, guid: e2f79ffef6f7e644b9bca5b94795596c, type: 3}
+  momo: {fileID: 997271364}
+  poolSize: 50
+  fireballSpeed: 5
+  attacksPerCycle: 5
+  timeBetweenAttacks: 2
+  timeBetweenCycles: 5
 --- !u!1001 &1598193801
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5813,6 +5865,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 398734272}
     m_Modifications:
+    - target: {fileID: -5562607831940526431, guid: 9375a6dc69247214e8985f68ea5c7627, type: 3}
+      propertyPath: azula
+      value: 
+      objectReference: {fileID: 1583626095}
     - target: {fileID: 496368792951975106, guid: 9375a6dc69247214e8985f68ea5c7627, type: 3}
       propertyPath: InitialModule.startLifetime.scalar
       value: 6.5
@@ -5878,6 +5934,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 398734272}
     m_Modifications:
+    - target: {fileID: -5562607831940526431, guid: 9375a6dc69247214e8985f68ea5c7627, type: 3}
+      propertyPath: azula
+      value: 
+      objectReference: {fileID: 1583626095}
     - target: {fileID: 496368792951975106, guid: 9375a6dc69247214e8985f68ea5c7627, type: 3}
       propertyPath: InitialModule.startLifetime.scalar
       value: 9.4
@@ -6105,6 +6165,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 398734272}
     m_Modifications:
+    - target: {fileID: -5562607831940526431, guid: 9375a6dc69247214e8985f68ea5c7627, type: 3}
+      propertyPath: azula
+      value: 
+      objectReference: {fileID: 1583626095}
     - target: {fileID: 496368792951975106, guid: 9375a6dc69247214e8985f68ea5c7627, type: 3}
       propertyPath: InitialModule.startLifetime.scalar
       value: 9.4
