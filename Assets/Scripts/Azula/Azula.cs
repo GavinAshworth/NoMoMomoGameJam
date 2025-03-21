@@ -11,6 +11,9 @@ public class Azula : MonoBehaviour
     private List<GameObject> fireballPool = new List<GameObject>();
 
     [SerializeField] GameObject fireballPrefab;
+    [SerializeField] GameObject lightningPrefab;
+    [SerializeField] int numberOfLightningStrikes = 5; // Number of lightning strikes to spawn
+    [SerializeField] float spawnRadius = 5f; // Radius around Momo to spawn lightning strikes
     [SerializeField] GameObject momo;
     [SerializeField] int poolSize = 100;
     [SerializeField] float fireballSpeed = 5f;
@@ -41,7 +44,7 @@ public class Azula : MonoBehaviour
     {
         if (!isAlive) return;
 
-        // Reset fireballs if they exceed 30 units from the boss
+        // Reset fireballs if they exceed 30 units from azula
         foreach (GameObject fireball in fireballPool)
         {
             if (fireball.activeInHierarchy && Vector3.Distance(fireball.transform.position, transform.position) > 30f)
@@ -93,11 +96,21 @@ public class Azula : MonoBehaviour
 
     // Animation Event - Lightning Strike
     public void OnLightningStrike()
+{
+    if (!isAlive || isHurt) return;
+    Debug.Log("Lightning Strike Triggered!");
+
+    for (int i = 0; i < numberOfLightningStrikes; i++)
     {
-        if (!isAlive || isHurt) return;
-        Debug.Log("Lightning Strike Triggered!");
-        // Add lightning effect or damage logic here
+        // Generate a random position within the spawn radius
+        Vector2 randomOffset = Random.insideUnitCircle * spawnRadius;
+        Vector3 spawnPosition = momo.transform.position + new Vector3(randomOffset.x, randomOffset.y, 0);
+
+        // Spawn our lightning attack at the random position's
+        GameObject lightning = Instantiate(lightningPrefab, spawnPosition, Quaternion.identity);
     }
+}
+
 
     // Animation Event - Fire Barrage Event (Called 5 times)
     public void OnFireBarrageEvent()
