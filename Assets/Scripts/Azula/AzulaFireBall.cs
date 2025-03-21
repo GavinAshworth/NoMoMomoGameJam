@@ -2,43 +2,38 @@ using UnityEngine;
 
 public class AzulaFireBall : MonoBehaviour
 {
-    private Transform spawnPoint; // Spawn point for the fireball
-    private Vector3 targetPosition; // Target position (could be momo or an offset tile potentially)
+    private Transform spawnPoint; // Spawn point for the fireball which is azula
+    private Vector3 direction; // Direction the fireball is moving
     private float speed;
-    private Vector2 direction;
 
-    public void Initialize(Transform spawn, Vector3 endPosition, float moveSpeed)
+    public void Initialize(Transform spawn, Vector3 moveDirection, float moveSpeed)
     {
         spawnPoint = spawn;
-        targetPosition = endPosition;
+        direction = moveDirection.normalized; // Ensure the direction is normalized
         speed = moveSpeed;
-        direction = (endPosition - transform.position).normalized;
 
-        // Rotate the fireball to face target position
-        RotateTowardsTarget();
+        // Rotate the fireball to face the movement direction
+        RotateTowardsDirection();
     }
 
     private void Update()
     {
         // Move the fireball in the specified direction
-        transform.position += (Vector3)(direction * speed * Time.deltaTime);
+        transform.position += direction * speed * Time.deltaTime;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Earth Ability"))
         {
-            ResetFireball();
+            ResetFireball(); //this is if the fireball hits momos earth ability (shield)
         }
     }
 
-    private void RotateTowardsTarget() //rotates the fireball towards wherever its supposed to be headed
+    private void RotateTowardsDirection() //makes sure the fireball is pointed towards where its going
     {
-        // Calculate the direction to the target position
-        Vector2 directionToTarget = (targetPosition - spawnPoint.position).normalized;
-
-        // Calculate the angle in degrees
-        float angle = Mathf.Atan2(directionToTarget.y, directionToTarget.x) * Mathf.Rad2Deg;
+        // Calculate the angle in degrees based on the direction
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
         // Apply the rotation to the fireball
         transform.rotation = Quaternion.Euler(0, 0, angle);

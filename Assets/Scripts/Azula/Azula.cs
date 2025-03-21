@@ -104,25 +104,40 @@ public class Azula : MonoBehaviour
     {
         if (!isAlive || isHurt) return;
 
-        int baseFireCount = 1; // Always 1 fireball at the player
-        int additionalFireCount = baseFireCount + (4 - lives) * 2; // Two extra fireballs per lost life
-        float spreadDistance = 2f; // Distance between fireballs
+        int totalFireballs = 1 + (4 - lives) * 2; // Base fireball + two extra per lost life
+        float coneAngle = 30f + (4 - lives) * 15; //cone gets slightly bigger as azula loses lives
+        float angleStep = (totalFireballs > 1) ? coneAngle / (totalFireballs - 1) : 0; // Handle division by zero
 
-        // Spawn the base fireball at the player
-        SpawnFireballAtTarget(momo.transform.position);
-
-        // Spawn additional fireballs to the sides based on lives lost
-        for (int i = 1; i <= additionalFireCount / 2; i++)
+        // Calculate the direction to the player
+        Vector3 directionToMomo = (momo.transform.position - transform.position);
+        if (directionToMomo == Vector3.zero)
         {
-            Vector3 leftOffset = momo.transform.position + Vector3.left * (spreadDistance * i);
-            Vector3 rightOffset = momo.transform.position + Vector3.right * (spreadDistance * i);
+            directionToMomo = Vector3.right; // Default direction if player is too close
+        }
+        directionToMomo = directionToMomo.normalized;
 
-            SpawnFireballAtTarget(leftOffset);
-            SpawnFireballAtTarget(rightOffset);
+        // Handle single fireball case
+        if (totalFireballs == 1)
+        {
+            SpawnFireballInDirection(directionToMomo);
+            return;
+        }
+
+        // Spawn fireballs in a cone
+        for (int i = 0; i < totalFireballs; i++)
+        {
+            // Calculate the angle for this fireball
+            float angle = -coneAngle / 2 + angleStep * i; // Spread from -coneAngle/2 to +coneAngle/2
+
+            // Rotate the direction to the player by the calculated angle
+            Vector3 fireballDirection = (Quaternion.Euler(0, 0, angle) * directionToMomo).normalized;
+
+            // Spawn the fireball in the calculated direction
+            SpawnFireballInDirection(fireballDirection);
         }
     }
 
-    private void SpawnFireballAtTarget(Vector3 targetPosition)
+    private void SpawnFireballInDirection(Vector3 direction)
     {
         GameObject fireball = GetFireballFromPool();
         if (fireball == null) return;
@@ -131,7 +146,7 @@ public class Azula : MonoBehaviour
         fireball.transform.position = transform.position;
 
         AzulaFireBall fireballScript = fireball.GetComponent<AzulaFireBall>();
-        fireballScript.Initialize(transform, targetPosition, fireballSpeed);
+        fireballScript.Initialize(transform, direction, fireballSpeed);
     }
 
     // Animation Event - End Attack
@@ -169,7 +184,7 @@ public class Azula : MonoBehaviour
         if (lives <= 0)
         {
             isAlive = false;
-            anim.SetBool("IsDead", true);
+            anim.SetTrigger("Death");
             StopAllCoroutines();
         }
     }
