@@ -20,6 +20,7 @@ public class Momo : MonoBehaviour
     private float lastInputY;
     private bool isDead;
     private Abilities abilities;
+    private int numberAtHome = 0; // keep track of how many checkpoints have been reached
 
     private void Start()
     {
@@ -183,6 +184,12 @@ public class Momo : MonoBehaviour
             Instantiate(homeSpritePrefab, tileCenter, Quaternion.identity);
         }
         //Increment home score here in the future once game manager is set up (once home score gets to 5 we move to next)
+        numberAtHome++;
+        if (numberAtHome == 5)
+        {
+            GameManager.Instance.LevelUp();
+            numberAtHome = 0;
+        }
 
         //Reset Momo's abilities here in the future
         abilities.StopAbility();

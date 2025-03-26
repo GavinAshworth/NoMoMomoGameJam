@@ -53,6 +53,7 @@ public class GameManager : MonoBehaviour
     public void LevelUp(){
         //Called when Momo hits a checkpoint 
         level = level + 1;
+        SceneHandler.Instance.LoadNextScene();
     }
 
     public void UnlockAbility(int ability){
