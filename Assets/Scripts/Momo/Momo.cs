@@ -185,9 +185,9 @@ public class Momo : MonoBehaviour
         }
         //Increment home score here in the future once game manager is set up (once home score gets to 5 we move to next)
         numberAtHome++;
-        if (numberAtHome == 5)
+        if (numberAtHome 5) 
         {
-            GameManager.Instance.LevelUp();
+            GameManager.Instance.LevelUp(); // LevelUp could also implement UI elements/animation showcasing going to next level
             numberAtHome = 0;
         }
 
