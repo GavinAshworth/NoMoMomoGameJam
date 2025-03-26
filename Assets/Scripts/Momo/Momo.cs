@@ -162,7 +162,8 @@ public class Momo : MonoBehaviour
         gameObject.SetActive(false);
 
         //Call our death function in the game manager once its set up
-        Invoke(nameof(Respawn), 1f);
+        GameManager.Instance.HasDied(damage);
+
     }
 
     //Called when momo reaches a home
@@ -185,23 +186,25 @@ public class Momo : MonoBehaviour
         }
         //Increment home score here in the future once game manager is set up (once home score gets to 5 we move to next)
         numberAtHome++;
-        if (numberAtHome 5) 
+        if (numberAtHome == 5) 
         {
             GameManager.Instance.LevelUp(); // LevelUp could also implement UI elements/animation showcasing going to next level
             numberAtHome = 0;
+        } else
+        {
+
+            //Reset Momo's abilities here in the future
+            abilities.StopAbility();
+            //Disable control of this script so momo cant move 
+            enabled = false;
+
+            //Disable momo so he cannot do anything while dead
+
+            gameObject.SetActive(false);
+
+            //Call our death function in the game manager once its set up
+            Invoke(nameof(Respawn), 1f);
         }
-
-        //Reset Momo's abilities here in the future
-        abilities.StopAbility();
-        //Disable control of this script so momo cant move 
-        enabled = false;
-
-        //Disable momo so he cannot do anything while dead
-
-        gameObject.SetActive(false);
-
-        //Call our death function in the game manager once its set up
-        Invoke(nameof(Respawn), 1f);
     }
 
     public void Respawn(){
