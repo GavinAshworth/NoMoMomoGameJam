@@ -20,6 +20,7 @@ public class Momo : MonoBehaviour
     private float lastInputY;
     private bool isDead;
     private Abilities abilities;
+    private int numberAtHome = 0; // keep track of how many checkpoints have been reached
 
     private void Start()
     {
@@ -161,7 +162,8 @@ public class Momo : MonoBehaviour
         gameObject.SetActive(false);
 
         //Call our death function in the game manager once its set up
-        Invoke(nameof(Respawn), 1f);
+        GameManager.Instance.HasDied(damage);
+
     }
 
     //Called when momo reaches a home
@@ -183,18 +185,26 @@ public class Momo : MonoBehaviour
             Instantiate(homeSpritePrefab, tileCenter, Quaternion.identity);
         }
         //Increment home score here in the future once game manager is set up (once home score gets to 5 we move to next)
+        numberAtHome++;
+        if (numberAtHome == 5) 
+        {
+            GameManager.Instance.LevelUp(); // LevelUp could also implement UI elements/animation showcasing going to next level
+            numberAtHome = 0;
+        } else
+        {
 
-        //Reset Momo's abilities here in the future
-        abilities.StopAbility();
-        //Disable control of this script so momo cant move 
-        enabled = false;
+            //Reset Momo's abilities here in the future
+            abilities.StopAbility();
+            //Disable control of this script so momo cant move 
+            enabled = false;
 
-        //Disable momo so he cannot do anything while dead
+            //Disable momo so he cannot do anything while dead
 
-        gameObject.SetActive(false);
+            gameObject.SetActive(false);
 
-        //Call our death function in the game manager once its set up
-        Invoke(nameof(Respawn), 1f);
+            //Call our death function in the game manager once its set up
+            Invoke(nameof(Respawn), 1f);
+        }
     }
 
     public void Respawn(){
