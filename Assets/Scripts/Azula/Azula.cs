@@ -23,7 +23,7 @@ public class Azula : MonoBehaviour
     // Attack cycle settings
     [SerializeField] private int attacksPerCycle = 5;
     [SerializeField] private float timeBetweenAttacks = 2f;
-    [SerializeField] private float timeBetweenCycles = 7f;
+    [SerializeField] private float timeBetweenCycles = 12f;
 
     void Start()
     {
@@ -66,6 +66,9 @@ public class Azula : MonoBehaviour
                 yield return null;
             }
 
+            //increase boss difficulty
+            timeBetweenAttacks = timeBetweenAttacks - (4 - lives) * 0.5f; //Attacks come faster as azula loses lives
+            attacksPerCycle = attacksPerCycle + (4 - lives); //1 more attack per cycle per life lost
             // Perform attack cycle
             for (attackCount = 0; attackCount < attacksPerCycle; attackCount++)
             {

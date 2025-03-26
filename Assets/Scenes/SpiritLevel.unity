@@ -5682,7 +5682,7 @@ MonoBehaviour:
   fireballSpeed: 7
   attacksPerCycle: 5
   timeBetweenAttacks: 2
-  timeBetweenCycles: 5
+  timeBetweenCycles: 9
 --- !u!1001 &1598193801
 PrefabInstance:
   m_ObjectHideFlags: 0
