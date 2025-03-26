@@ -1154,6 +1154,10 @@ PrefabInstance:
       value: Momo
       objectReference: {fileID: 0}
     - target: {fileID: 6340918602383351349, guid: 77502349c8f9b07489a5ce5bac229c7e, type: 3}
+      propertyPath: isGodMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6340918602383351349, guid: 77502349c8f9b07489a5ce5bac229c7e, type: 3}
       propertyPath: homeTilemap
       value: 
       objectReference: {fileID: 14086029}

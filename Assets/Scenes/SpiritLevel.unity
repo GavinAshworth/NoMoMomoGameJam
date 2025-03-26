@@ -5682,7 +5682,7 @@ MonoBehaviour:
   fireballSpeed: 7
   attacksPerCycle: 5
   timeBetweenAttacks: 2
-  timeBetweenCycles: 5
+  timeBetweenCycles: 9
 --- !u!1001 &1598193801
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6578,9 +6578,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4603748375538617035, guid: 77502349c8f9b07489a5ce5bac229c7e, type: 3}
+      propertyPath: isTestMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1652529745256764096, guid: 77502349c8f9b07489a5ce5bac229c7e, type: 3}
       propertyPath: m_Name
       value: Momo
+      objectReference: {fileID: 0}
+    - target: {fileID: 6340918602383351349, guid: 77502349c8f9b07489a5ce5bac229c7e, type: 3}
+      propertyPath: isGodMode
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6340918602383351349, guid: 77502349c8f9b07489a5ce5bac229c7e, type: 3}
       propertyPath: homeTilemap

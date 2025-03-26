@@ -10,6 +10,7 @@ public class Momo : MonoBehaviour
     [SerializeField] private Vector3 respawnPoint; // Momo's current reset position
     [SerializeField] private GameObject homeSpritePrefab; // sprite we want to place on the home once we reach it
     [SerializeField] private Tilemap homeTilemap; // the tile map for the homes
+    [SerializeField] private bool isGodMode;
     private Rigidbody2D rb;
     private float constMoveTime;
     private Vector2 moveDirection;
@@ -63,7 +64,7 @@ public class Momo : MonoBehaviour
                 return;
             } 
             // Momo dies when he lands in the abyss (loses a life and gets reset). 
-            if (abyss != null && platform == null && ground == null && home == null)
+            if (abyss != null && platform == null && ground == null && home == null && !isGodMode)
             {
                 //Call our death function. Currently everything just does 1 damage for now
                 Death(targetPosition, 1);
@@ -137,6 +138,10 @@ public class Momo : MonoBehaviour
     }
 
     public void Death(Vector2 target, int damage){
+        //God Mode for testing purposes
+        if(isGodMode){
+            return;
+        }
         StopAllCoroutines();    
         moveDirection = Vector2.zero;  //reset movement
         isMoving = true; // prevent movement bug
@@ -188,6 +193,7 @@ public class Momo : MonoBehaviour
         numberAtHome++;
         if (numberAtHome == 5) 
         {
+            gameObject.SetActive(false);
             GameManager.Instance.LevelUp(); // LevelUp could also implement UI elements/animation showcasing going to next level
             numberAtHome = 0;
         } else
