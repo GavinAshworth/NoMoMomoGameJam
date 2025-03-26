@@ -6,8 +6,26 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Preload.unity
+    guid: 1d2e3c468602249518c35234d71abf86
+  - enabled: 1
+    path: Assets/Scenes/Start.unity
+    guid: 4040992194245174ba20668a9cd47d24
+  - enabled: 1
     path: Assets/Scenes/AirLevel.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/WaterLevel.unity
+    guid: f920abf575ac37f4eb4344c016408c06
+  - enabled: 1
+    path: Assets/Scenes/EarthLevel.unity
+    guid: e3cd9f3a4916f8b498357af82d6df4c0
+  - enabled: 1
+    path: Assets/Scenes/FireLevel.unity
+    guid: 0f66fcddac55a7f47a5c8e9012e1956b
+  - enabled: 1
+    path: Assets/Scenes/SpiritLevel.unity
+    guid: 2d1270934e80e0f42b7d8fe9648c8292
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 3590b91b4603b465dbb4216d601bff33, type: 3}
   m_UseUCBPForAssetBundles: 0

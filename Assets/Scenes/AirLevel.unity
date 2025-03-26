@@ -119,6 +119,51 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &7222001
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7222003}
+  - component: {fileID: 7222002}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &7222002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7222001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65fde73345ad849eabaedc19cea2d8f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  momo: {fileID: 1346552809}
+--- !u!4 &7222003
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7222001}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &14086026
 GameObject:
   m_ObjectHideFlags: 0
@@ -5513,6 +5558,17 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1346552809 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6340918602383351349, guid: 77502349c8f9b07489a5ce5bac229c7e, type: 3}
+  m_PrefabInstance: {fileID: 851425222}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2abdd5480ef808b46ab4b381f56a8011, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2307231720274559524
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5636,3 +5692,4 @@ SceneRoots:
   - {fileID: 1153632364}
   - {fileID: 2307231720274559524}
   - {fileID: 8977372853607037012}
+  - {fileID: 7222003}
