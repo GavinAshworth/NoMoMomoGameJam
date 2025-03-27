@@ -247,7 +247,7 @@ MonoBehaviour:
   - SpiritLevel
   menuScene: Start
   animationType: 19
-  animationDuration: 1.5
+  animationDuration: 1
   transitionCanvas: {fileID: 273550295}
 --- !u!114 &1185825556
 MonoBehaviour:
