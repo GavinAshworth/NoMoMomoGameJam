@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[DefaultExecutionOrder(-1)] //We put this here so Unity runs this script first.
+[DefaultExecutionOrder(-0)]
 public class GameManager : MonoBehaviour
 {
     //This is our Game Manager script. This will keep track of 
@@ -18,7 +18,6 @@ public class GameManager : MonoBehaviour
     public int score { get; private set; } = 0;
     public int lives { get; private set; } = 50;
     public bool[] abilities { get; private set; }  = new bool[4];
-    public int level { get; private set; } = 1;
     public float timeLimit { get; private set; } = 300f;
 
 
@@ -42,18 +41,23 @@ public class GameManager : MonoBehaviour
         NewGame();
     }
     private void NewGame(){
-        //Instantiate a new game here
         SetScore(0);
-        SetLives(50); //Change back to 3 eventually
-        abilities = new bool[] {false,false,false,false}; //Momo starts with no abilities unlocked
-        level = 1; //Momo starts at the air level
-
+        SetLives(50);
+        abilities = new bool[] {false,false,false,false};
+        if (LevelHandler.Instance != null) {
+            LevelHandler.Instance.ResetLevel();
+        } else {
+            Debug.LogError("LevelHandler not found!");
+        }
     }
 
     public void LevelUp(){
-        //Called when Momo hits a checkpoint 
-        level += 1;
-        SceneHandler.Instance.LoadNextScene();
+        if (LevelHandler.Instance != null) {
+            LevelHandler.Instance.IncrementLevel();
+            SceneHandler.Instance.LoadNextScene();
+        } else {
+            Debug.LogError("LevelHandler not found!");
+        }
     }
 
     public void UnlockAbility(int ability){

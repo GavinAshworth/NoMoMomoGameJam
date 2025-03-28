@@ -23,10 +23,11 @@ public class Abilities : MonoBehaviour
     private void Start(){
         momo = GetComponent<Momo>();
     }
+    
 
     public void OnAirAbility(InputAction.CallbackContext context)
     {
-        if(GameManager.Instance.level > 1 || isTestMode) {
+        if(LevelHandler.Instance.level > 1 || isTestMode) {
             if (context.performed && !isAbilityActive)
             {
                 SpawnEffect(airEffectPrefab);
@@ -38,7 +39,7 @@ public class Abilities : MonoBehaviour
 
     public void OnWaterAbility(InputAction.CallbackContext context)
     {
-        if (context.performed && !isAbilityActive && (GameManager.Instance.level > 2 || isTestMode))
+        if (context.performed && !isAbilityActive && (LevelHandler.Instance.level > 2 || isTestMode))
         {
             SpawnEffect(waterEffectPrefab);
              // momo regenerates 1 life
@@ -48,7 +49,7 @@ public class Abilities : MonoBehaviour
 
     public void OnEarthAbility(InputAction.CallbackContext context)
     {
-        if (context.performed && !isAbilityActive && (GameManager.Instance.level > 3 || isTestMode))
+        if (context.performed && !isAbilityActive && (LevelHandler.Instance.level > 3 || isTestMode))
         {
             SpawnEffect(earthEffectPrefab);
             // momo will get a shield for a few seconds
@@ -58,7 +59,7 @@ public class Abilities : MonoBehaviour
 
     public void OnFireAbility(InputAction.CallbackContext context)
     {
-        if (context.performed && !isAbilityActive && (GameManager.Instance.level > 4 || isTestMode))
+        if (context.performed && !isAbilityActive && (LevelHandler.Instance.level > 4 || isTestMode))
         {
             SpawnEffect(fireEffectPrefab);
              // Momo will shoot out a fire explosion, this is to destroy the crystals on the boss level
