@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
 
     private void NewGame(){
         SetScore(0);
-        SetLives(50);
+        SetLives(3);
         abilities = new bool[] {false,false,false,false};
         if (LevelHandler.Instance != null) {
             LevelHandler.Instance.ResetLevel();
@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
 
     public void LevelUp(){
         //Called when Momo hits a checkpoint 
-        GameManager.Instance.AddScore(500);
+        GameManager.Instance.AddScore(300);
         level += 1;
         SceneHandler.Instance.LoadNextScene();
         if (LevelHandler.Instance != null) {
@@ -138,7 +138,7 @@ public class GameManager : MonoBehaviour
     }
     
     public void Heal(){
-        if(lives<50){ // set to 3 when done developing
+        if(lives<3){ // set to 3 when done developing
             SetLives(lives + 1);
         }
         else{
