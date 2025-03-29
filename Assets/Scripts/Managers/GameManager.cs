@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[DefaultExecutionOrder(-1)] //We put this here so Unity runs this script first.
+[DefaultExecutionOrder(-0)]
 public class GameManager : MonoBehaviour
 {
     //This is our Game Manager script. This will keep track of 
@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private TMPro.TMP_Text scoreText;
     public int score { get; private set; } = 0;
-    public int lives { get; private set; } = 3;
+    public int lives { get; private set; } = 50;
     public bool[] abilities { get; private set; }  = new bool[4];
     public int level { get; private set; } = 1;
     [SerializeField] public float timeLimit { get; private set; } = 60f;
@@ -56,12 +56,14 @@ public class GameManager : MonoBehaviour
     }
 
     private void NewGame(){
-        //Instantiate a new game here
         SetScore(0);
-        SetLives(3); //Change back to 3 eventually
-        abilities = new bool[] {false,false,false,false}; //Momo starts with no abilities unlocked
-        level = 1; //Momo starts at the air level
-
+        SetLives(50);
+        abilities = new bool[] {false,false,false,false};
+        if (LevelHandler.Instance != null) {
+            LevelHandler.Instance.ResetLevel();
+        } else {
+            Debug.LogError("LevelHandler not found!");
+        }
     }
 
     public void LevelUp(){
@@ -69,6 +71,12 @@ public class GameManager : MonoBehaviour
         GameManager.Instance.AddScore(500);
         level += 1;
         SceneHandler.Instance.LoadNextScene();
+        if (LevelHandler.Instance != null) {
+            LevelHandler.Instance.IncrementLevel();
+            SceneHandler.Instance.LoadNextScene();
+        } else {
+            Debug.LogError("LevelHandler not found!");
+        }
     }
 
     public void UnlockAbility(int ability){
@@ -130,7 +138,7 @@ public class GameManager : MonoBehaviour
     }
     
     public void Heal(){
-        if(lives<3){ // set to 3 when done developing
+        if(lives<50){ // set to 3 when done developing
             SetLives(lives + 1);
         }
         else{
