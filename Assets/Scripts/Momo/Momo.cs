@@ -22,6 +22,7 @@ public class Momo : MonoBehaviour
     private bool isDead;
     private Abilities abilities;
     private int numberAtHome = 0; // keep track of how many checkpoints have been reached
+    public TimerBarUI timerBarUI;
 
     private void Start()
     {
@@ -117,6 +118,9 @@ public class Momo : MonoBehaviour
         Vector2 startPosition = rb.position;
         float elapsedTime = 0f;
 
+        if (target.y > transform.position.y)
+            GameManager.Instance.AddScore(10);
+
         while (elapsedTime < moveTime)
         {
             rb.linearVelocity = (target - startPosition) / moveTime; // Smooth transition
@@ -178,6 +182,9 @@ public class Momo : MonoBehaviour
         isMoving = true; // prevent movement bug
         animator.SetBool("isJumping", false); //exit jump animation
         transform.SetParent(null);
+        GameManager.Instance.AddScore(300);
+        timerBarUI.addTime(10);
+        Debug.Log("Time: " + timerBarUI.getTime());
 
         //set Home Sprite to the location
 
