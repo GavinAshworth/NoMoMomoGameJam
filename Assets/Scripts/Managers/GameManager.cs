@@ -21,6 +21,9 @@ public class GameManager : MonoBehaviour
     public int level { get; private set; } = 1;
     public float timeLimit { get; private set; } = 300f;
 
+    //for managing the health bar
+    [SerializeField] private HealthUI healthUI;
+
 
     private void Awake()
     {
@@ -67,8 +70,13 @@ public class GameManager : MonoBehaviour
     }
 
     private void SetLives(int lives){
+        
         this.lives = lives;
         //ui changes here
+        if (healthUI != null)
+        {
+        healthUI.UpdateHearts(this.lives);
+        }
     }
 
     public void HasDied(int damage){
