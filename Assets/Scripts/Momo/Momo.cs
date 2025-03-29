@@ -193,7 +193,7 @@ public class Momo : MonoBehaviour
         numberAtHome++;
         if (numberAtHome == 5) 
         {
-            gameObject.SetActive(false);
+            // gameObject.SetActive(false);
             GameManager.Instance.LevelUp(); // LevelUp could also implement UI elements/animation showcasing going to next level
             numberAtHome = 0;
         } else
