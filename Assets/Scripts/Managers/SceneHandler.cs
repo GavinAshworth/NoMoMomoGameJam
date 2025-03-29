@@ -39,7 +39,7 @@ public class SceneHandler : SingletonMonoBehavior<SceneHandler>
         if(nextLevelIndex >= levels.Count)
         {
             LoadMenuScene();
-        }
+        } 
         else
         {
             transitionCanvas.DOLocalMoveX(initXPosition + transitionCanvas.rect.width, animationDuration).SetEase(animationType);
