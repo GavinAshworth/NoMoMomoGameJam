@@ -15,10 +15,13 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private Momo momo; //Instance of our Momo script attached to momo
 
+    [SerializeField] private TMPro.TMP_Text scoreText;
     public int score { get; private set; } = 0;
     public int lives { get; private set; } = 50;
     public bool[] abilities { get; private set; }  = new bool[4];
-    public float timeLimit { get; private set; } = 300f;
+    public int level { get; private set; } = 1;
+    [SerializeField] public float timeLimit { get; private set; } = 60f;
+    public TimerBarUI timerBarUI;
 
     //for managing the health bar
     [SerializeField] private HealthUI healthUI;
@@ -43,6 +46,15 @@ public class GameManager : MonoBehaviour
     private void Start(){
         NewGame();
     }
+
+    private void Update()
+    {
+        if (timerBarUI != null && timerBarUI.getTime() <= 0f)
+        {
+            GameOver();
+        }
+    }
+
     private void NewGame(){
         SetScore(0);
         SetLives(50);
@@ -55,6 +67,10 @@ public class GameManager : MonoBehaviour
     }
 
     public void LevelUp(){
+        //Called when Momo hits a checkpoint 
+        GameManager.Instance.AddScore(500);
+        level += 1;
+        SceneHandler.Instance.LoadNextScene();
         if (LevelHandler.Instance != null) {
             LevelHandler.Instance.IncrementLevel();
             SceneHandler.Instance.LoadNextScene();
@@ -68,10 +84,22 @@ public class GameManager : MonoBehaviour
         abilities[ability] = true;
     }
 
-    private void SetScore(int score){
+    private void SetScore(int score)
+    {
         this.score = score;
-        //ui changes here
+
+        if (scoreText != null)
+        {
+            scoreText.text = score.ToString("D5"); // Displays like "Score: 00025"
+        }
     }
+
+    public void AddScore(int amount)
+    {
+        SetScore(score + amount);
+    }
+
+
 
     private void SetLives(int lives){
         
@@ -108,6 +136,7 @@ public class GameManager : MonoBehaviour
         //Game Over Screen here
 
     }
+    
     public void Heal(){
         if(lives<50){ // set to 3 when done developing
             SetLives(lives + 1);

@@ -29,4 +29,16 @@ public class TimerBarUI : MonoBehaviour
         remainingTime = totalTime;
         timerFill.fillAmount = 1f;
     }
+
+    public float getTime() {
+        return this.remainingTime;
+    }
+
+    public void addTime(float time) {
+        this.remainingTime += time;
+
+        if (this.remainingTime > this.totalTime) {
+            this.remainingTime = this.totalTime;
+        }
+    }
 }
