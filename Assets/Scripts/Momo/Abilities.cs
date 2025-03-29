@@ -43,7 +43,7 @@ public class Abilities : MonoBehaviour
         {
             SpawnEffect(waterEffectPrefab);
              // momo regenerates 1 life
-            //  GameManager.Instance.Heal(); this is what it will do once game manager is set up
+             GameManager.Instance.Heal(); 
         }
     }
 
