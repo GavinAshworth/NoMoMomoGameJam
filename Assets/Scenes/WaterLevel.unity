@@ -6249,6 +6249,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   momo: {fileID: 7680321247040749206}
+  scoreText: {fileID: 0}
+  timerBarUI: {fileID: 0}
+  healthUI: {fileID: 0}
 --- !u!4 &1819393322
 Transform:
   m_ObjectHideFlags: 0
@@ -6350,6 +6353,10 @@ PrefabInstance:
     - target: {fileID: 1652529745256764096, guid: 77502349c8f9b07489a5ce5bac229c7e, type: 3}
       propertyPath: m_Name
       value: Momo
+      objectReference: {fileID: 0}
+    - target: {fileID: 1652529745256764096, guid: 77502349c8f9b07489a5ce5bac229c7e, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6340918602383351349, guid: 77502349c8f9b07489a5ce5bac229c7e, type: 3}
       propertyPath: isGodMode
