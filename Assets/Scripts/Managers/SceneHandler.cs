@@ -16,7 +16,7 @@ public class SceneHandler : SingletonMonoBehavior<SceneHandler>
     [SerializeField] private float animationDuration;
     [SerializeField] private RectTransform transitionCanvas;
 
-    private int nextLevelIndex;
+    private string currentLevel;
     private float initXPosition;
 
     
@@ -27,6 +27,7 @@ public class SceneHandler : SingletonMonoBehavior<SceneHandler>
         initXPosition = transitionCanvas.transform.localPosition.x;
         SceneManager.LoadScene(menuScene);
         SceneManager.sceneLoaded += OnSceneLoad;
+        currentLevel = "Start";
     }
 
     private void OnSceneLoad(Scene scene, LoadSceneMode _)
@@ -36,25 +37,50 @@ public class SceneHandler : SingletonMonoBehavior<SceneHandler>
 
     public void LoadNextScene()
     {
-        if(nextLevelIndex >= levels.Count)
+        if(currentLevel.Equals("SpiritLevel"))
         {
             LoadMenuScene();
         } 
-        else
+        else if(currentLevel.Equals("Start"))
         {
             transitionCanvas.DOLocalMoveX(initXPosition + transitionCanvas.rect.width, animationDuration).SetEase(animationType);
-            StartCoroutine(LoadSceneAfterTransition(levels[nextLevelIndex]));
-            nextLevelIndex++;
-        }
+            StartCoroutine(LoadSceneAfterTransition("AirLevel"));
+            currentLevel = "AirLevel";
+        } 
+        else if(currentLevel.Equals("AirLevel"))
+        {
+            transitionCanvas.DOLocalMoveX(initXPosition + transitionCanvas.rect.width, animationDuration).SetEase(animationType);
+            StartCoroutine(LoadSceneAfterTransition("WaterLevel"));
+            currentLevel = "WaterLevel";
+        }  
+        else if(currentLevel.Equals("WaterLevel"))
+        {
+            transitionCanvas.DOLocalMoveX(initXPosition + transitionCanvas.rect.width, animationDuration).SetEase(animationType);
+            StartCoroutine(LoadSceneAfterTransition("EarthLevel"));
+            currentLevel = "EarthLevel";
+        }  
+        else if(currentLevel.Equals("EarthLevel"))
+        {
+            transitionCanvas.DOLocalMoveX(initXPosition + transitionCanvas.rect.width, animationDuration).SetEase(animationType);
+            StartCoroutine(LoadSceneAfterTransition("FireLevel"));
+            currentLevel = "FireLevel";
+        } 
+        else if(currentLevel.Equals("FireLevel"))
+        {
+            transitionCanvas.DOLocalMoveX(initXPosition + transitionCanvas.rect.width, animationDuration).SetEase(animationType);
+            StartCoroutine(LoadSceneAfterTransition("SpiritLevel"));
+            currentLevel = "SpiritLevel";
+        } 
     }
 
     public void LoadMenuScene() {
         StartCoroutine(LoadSceneAfterTransition(menuScene));
-        nextLevelIndex = 0;
+        currentLevel = "Start";
     }
 
     private IEnumerator LoadSceneAfterTransition(string scene)
     {
+        Debug.Log(scene);
         yield return new WaitForSeconds(animationDuration);
         SceneManager.LoadScene(scene);
     }
