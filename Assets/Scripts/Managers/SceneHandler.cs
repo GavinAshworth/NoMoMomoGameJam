@@ -59,9 +59,4 @@ public class SceneHandler : SingletonMonoBehavior<SceneHandler>
         SceneManager.LoadScene(scene);
     }
 
-    private IEnumerator LoadInitialScene()
-    {
-        yield return new WaitForSeconds(5f);
-        SceneManager.LoadScene(menuScene);
-    }
 }
