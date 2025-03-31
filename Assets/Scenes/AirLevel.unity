@@ -2457,6 +2457,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Momo
       objectReference: {fileID: 0}
+    - target: {fileID: 1652529745256764096, guid: 77502349c8f9b07489a5ce5bac229c7e, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 6340918602383351349, guid: 77502349c8f9b07489a5ce5bac229c7e, type: 3}
       propertyPath: isGodMode
       value: 0
@@ -8089,6 +8093,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1413441705444494362, guid: 97ed027fde4d14f4f9e9acddf43f8e8d, type: 3}
+      propertyPath: platformCount
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2999919980635686886, guid: 97ed027fde4d14f4f9e9acddf43f8e8d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -11
@@ -8128,6 +8136,18 @@ PrefabInstance:
     - target: {fileID: 2999919980635686886, guid: 97ed027fde4d14f4f9e9acddf43f8e8d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3516878526685316210, guid: 97ed027fde4d14f4f9e9acddf43f8e8d, type: 3}
+      propertyPath: platformCount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3863561779047413927, guid: 97ed027fde4d14f4f9e9acddf43f8e8d, type: 3}
+      propertyPath: platformCount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3927806612933760798, guid: 97ed027fde4d14f4f9e9acddf43f8e8d, type: 3}
+      propertyPath: platformCount
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5322203236371430726, guid: 97ed027fde4d14f4f9e9acddf43f8e8d, type: 3}
       propertyPath: m_Name

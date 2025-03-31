@@ -4,8 +4,8 @@ public class ProjectileSpawner : MonoBehaviour
 {
     [SerializeField] private Transform spawnPoint; // Spawn point 
     [SerializeField] private Transform endPoint; // End point 
-    [SerializeField] private float moveSpeed = 2f; // Speed of the projectile
-    [SerializeField] private int projectileCount = 3; // Number of projectiles to spawn
+    private float moveSpeed = 2f; // Speed of the projectile
+    [SerializeField] private int projectileCount = 1; // Number of projectiles to spawn
     [SerializeField] private bool isReverse;
 
     private ParentProjectileSpawner parentScript;
@@ -78,7 +78,7 @@ public class ProjectileSpawner : MonoBehaviour
             index = (index + 1);
 
             // Wait for the specified spawn interval. We add in a little randomness to make level different every time
-            yield return new WaitForSeconds(spawnInterval + Random.Range(-0.5f, 0.5f));
+            yield return new WaitForSeconds(spawnInterval + Random.Range(-2f, 2f));
         }
     }
 }

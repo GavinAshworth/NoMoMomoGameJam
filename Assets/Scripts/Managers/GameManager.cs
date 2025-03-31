@@ -34,12 +34,25 @@ public class GameManager : MonoBehaviour
             DestroyImmediate(gameObject);
         } else {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (playerObj != null)
+        {
+            momo = playerObj.GetComponent<Momo>();
         }
     }
 
     private void OnDestroy()
     {
-        if (Instance == this) {
+        if (Instance == this)
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
             Instance = null;
         }
     }
@@ -76,12 +89,7 @@ public class GameManager : MonoBehaviour
         GameManager.Instance.AddScore(300);
         level += 1;
         SceneHandler.Instance.LoadNextScene();
-        if (LevelHandler.Instance != null) {
-            LevelHandler.Instance.IncrementLevel();
-            SceneHandler.Instance.LoadNextScene();
-        } else {
-            Debug.LogError("LevelHandler not found!");
-        }
+        LevelHandler.Instance.IncrementLevel();
     }
 
     public void UnlockAbility(int ability){
