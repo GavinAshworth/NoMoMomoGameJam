@@ -18,6 +18,7 @@ public class TutorialSlideshow : MonoBehaviour
             slides[i].SetActive(i == index);
 
         currentSlide = index;
+        AudioManager.Instance.PlaySFX("ButtonClick");
     }
 
     public void NextSlide()
@@ -34,6 +35,7 @@ public class TutorialSlideshow : MonoBehaviour
 
     public void CloseTutorial()
     {
+        AudioManager.Instance.PlaySFX("ButtonClick");
         gameObject.SetActive(false);
     }
 }

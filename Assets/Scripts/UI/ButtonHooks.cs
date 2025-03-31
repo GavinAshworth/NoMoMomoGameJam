@@ -6,6 +6,7 @@ public class ButtonHooks : MonoBehaviour
 {
     public void LoadNextScene()
     {
+        AudioManager.Instance.PlaySFX("ButtonClick");
         Destroy(gameObject); // Destroys button prior to animation, could be replaced with smoother transition
         SceneHandler.Instance.LoadNextScene();
     }

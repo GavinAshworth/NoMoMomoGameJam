@@ -73,6 +73,7 @@ public class Abilities : MonoBehaviour
             SpawnEffect(waterEffectPrefab);
             GameManager.Instance.Heal();
             waterCooldownTimer = waterCooldown;
+            AudioManager.Instance.PlaySFX("Water Ability");
         }
     }
 
@@ -81,14 +82,17 @@ public class Abilities : MonoBehaviour
             SpawnEffect(earthEffectPrefab);
             isShielded = true;
             earthCooldownTimer = earthCooldown;
+            AudioManager.Instance.PlaySFX("Earth Ability");
         }
     }
 
     public void OnFireAbility(InputAction.CallbackContext context) {
         if ((LevelHandler.Instance.level > 4 || isTestMode) && context.performed && !isAbilityActive && fireCooldownTimer <= 0f) {
             SpawnEffect(fireEffectPrefab);
-            isFire = true;
             fireCooldownTimer = fireCooldown;
+            // Momo will shoot out a fire explosion, this is to destroy the crystals on the boss level
+            isFire = true;
+            AudioManager.Instance.PlaySFX("Fire Ability");
         }
     }
 
