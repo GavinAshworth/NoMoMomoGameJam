@@ -226,7 +226,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -495,17 +495,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSounds:
   - name: Menu
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 5e20a79676c69456b857e9446a0eac3a, type: 3}
   - name: Air Level
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: aa93af8a897da4eea869512f6cd5ad49, type: 3}
   - name: Water Level
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 4e35f6e4544fc4edd826cb5ca125a92f, type: 3}
   - name: Earth Level
     clip: {fileID: 8300000, guid: b34212607b1ec4a428bf66670ec6b5b5, type: 3}
   - name: Fire Level
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 223432bae3a46481dad98ec78b95f679, type: 3}
   - name: Spirit Level
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: cb9b86a097f654f75b4bd11a59fea468, type: 3}
   sfxSounds:
   - name: Move
     clip: {fileID: 8300000, guid: 4d4baffea302147638f1939a6eae3b0f, type: 3}
@@ -523,6 +523,10 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 44bbce102d52047d2aa07ca3bd1130fa, type: 3}
   - name: Checkpoint
     clip: {fileID: 8300000, guid: 2406848ca733a453b83b1969a2b90778, type: 3}
+  - name: ButtonClick
+    clip: {fileID: 8300000, guid: 6c927250d468d4cdea79c8850d90ee59, type: 3}
+  - name: AzulaLightning
+    clip: {fileID: 8300000, guid: de48178fc72434b468e1469cdd566916, type: 3}
   musicSource: {fileID: 589083788}
   sfxSource: {fileID: 1329959621}
 --- !u!1 &1329959620

@@ -22,7 +22,7 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        PlayMusic("Earth Level"); // Make sure to change to menu
+        PlayMusic("Menu"); // Make sure to change to menu
     }
 
 

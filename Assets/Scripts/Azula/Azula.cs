@@ -137,6 +137,8 @@ public class Azula : MonoBehaviour
 
             // Wait for a short delay before the next strike
             yield return new WaitForSeconds(0.5f);
+            AudioManager.Instance.PlaySFX("AzulaLightning");
+
         }
     }
 

@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 [DefaultExecutionOrder(-1)]
 public class SceneHandler : SingletonMonoBehavior<SceneHandler>
 {
-    
+
     [Header("Scene Data")]
     [SerializeField] private List<string> levels;
     [SerializeField] private string menuScene;
@@ -19,7 +19,7 @@ public class SceneHandler : SingletonMonoBehavior<SceneHandler>
     private int nextLevelIndex;
     private float initXPosition;
 
-    
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected override void Awake()
     {
@@ -36,10 +36,10 @@ public class SceneHandler : SingletonMonoBehavior<SceneHandler>
 
     public void LoadNextScene()
     {
-        if(nextLevelIndex >= levels.Count)
+        if (nextLevelIndex >= levels.Count)
         {
             LoadMenuScene();
-        } 
+        }
         else
         {
             transitionCanvas.DOLocalMoveX(initXPosition + transitionCanvas.rect.width, animationDuration).SetEase(animationType);
@@ -48,7 +48,8 @@ public class SceneHandler : SingletonMonoBehavior<SceneHandler>
         }
     }
 
-    public void LoadMenuScene() {
+    public void LoadMenuScene()
+    {
         StartCoroutine(LoadSceneAfterTransition(menuScene));
         nextLevelIndex = 0;
     }
@@ -57,9 +58,11 @@ public class SceneHandler : SingletonMonoBehavior<SceneHandler>
     {
         yield return new WaitForSeconds(animationDuration);
         SceneManager.LoadScene(scene);
+        PlayMusic(nextLevelIndex);
     }
 
-    public void RestartGame() {
+    public void RestartGame()
+    {
         nextLevelIndex = 0;
         LoadNextScene();
     }
@@ -70,7 +73,34 @@ public class SceneHandler : SingletonMonoBehavior<SceneHandler>
         SceneManager.LoadScene(menuScene);
     }
 
-    public int GetLevel() {
+    public int GetLevel()
+    {
         return this.nextLevelIndex - 1;
     }
+
+    public void PlayMusic(int level)
+    {
+        switch (level)
+        {
+            case 0:
+                AudioManager.Instance.PlayMusic("Menu");
+                break;
+            case 1:
+                AudioManager.Instance.PlayMusic("Air Level");
+                break;
+            case 2:
+                AudioManager.Instance.PlayMusic("Water Level");
+                break;
+            case 3:
+                AudioManager.Instance.PlayMusic("Earth Level");
+                break;
+            case 4:
+                AudioManager.Instance.PlayMusic("Fire Level");
+                break;
+            default:
+                AudioManager.Instance.PlayMusic("Spirit Level");
+                break;
+        }
+    }
 }
+
