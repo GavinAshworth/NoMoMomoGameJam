@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     //Also includes all the associated methods for updating the things above
 
     public static GameManager Instance { get; private set; } //singleton
-
+    public GameObject gameOverPopup; 
     [SerializeField] private Momo momo; //Instance of our Momo script attached to momo
 
     [SerializeField] private TMPro.TMP_Text scoreText;
@@ -65,11 +65,15 @@ public class GameManager : MonoBehaviour
     {
         if (timerBarUI != null && timerBarUI.getTime() <= 0f)
         {
-            GameOver();
+            HasDied(1);
+            // GameOver();
         }
     }
 
-    private void NewGame(){
+    public void NewGame(){
+        timerBarUI.Play();
+        Respawn();
+        gameOverPopup.SetActive(false);
         SetScore(0);
         SetLives(3);
         abilities = new bool[] {false,false,false,false};
@@ -126,7 +130,7 @@ public class GameManager : MonoBehaviour
 
         //if all lives gone then momo has lost the game
         if(lives<=0){
-            Invoke(nameof(GameOver), 2f);
+            Invoke(nameof(GameOver), 0.5f);
         }
         else{
             //Momo still has lives so we respawn him
@@ -143,7 +147,9 @@ public class GameManager : MonoBehaviour
         //Called when momo loses all lives
         momo.gameObject.SetActive(false);
         //Game Over Screen here
-
+        gameOverPopup.SetActive(true);
+        timerBarUI.ResetTimer();
+        timerBarUI.Pause();
     }
     
     public void Heal(){
@@ -156,4 +162,9 @@ public class GameManager : MonoBehaviour
         
     }
 
+    public void LoadStartScene()
+    {
+        gameOverPopup.SetActive(false);
+        SceneHandler.Instance.LoadMenuScene();
+    }
 }

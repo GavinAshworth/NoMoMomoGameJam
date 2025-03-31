@@ -85,4 +85,18 @@ public class SceneHandler : SingletonMonoBehavior<SceneHandler>
         SceneManager.LoadScene(scene);
     }
 
+    public void RestartGame() {
+        nextLevelIndex = 0;
+        LoadNextScene();
+    }
+
+    private IEnumerator LoadInitialScene()
+    {
+        yield return new WaitForSeconds(5f);
+        SceneManager.LoadScene(menuScene);
+    }
+
+    public int GetLevel() {
+        return this.nextLevelIndex - 1;
+    }
 }
