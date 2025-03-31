@@ -20,19 +20,22 @@ public class Abilities : MonoBehaviour
     private Momo momo; //Our momo script 
     private bool isAbilityActive = false; // Flag to track if an ability is currently active
 
-    private void Start(){
+    private void Start()
+    {
         momo = GetComponent<Momo>();
     }
-    
+
 
     public void OnAirAbility(InputAction.CallbackContext context)
     {
-        if(LevelHandler.Instance.level > 1 || isTestMode) {
+        if (LevelHandler.Instance.level > 1 || isTestMode)
+        {
             if (context.performed && !isAbilityActive)
             {
                 SpawnEffect(airEffectPrefab);
                 //  momo will speed up for a few seconds
                 isFlying = true;
+                AudioManager.Instance.PlaySFX("Air Ability");
             }
         }
     }
@@ -42,8 +45,9 @@ public class Abilities : MonoBehaviour
         if (context.performed && !isAbilityActive && (LevelHandler.Instance.level > 2 || isTestMode))
         {
             SpawnEffect(waterEffectPrefab);
-             // momo regenerates 1 life
-             GameManager.Instance.Heal(); 
+            // momo regenerates 1 life
+            GameManager.Instance.Heal();
+            AudioManager.Instance.PlaySFX("Water Ability");
         }
     }
 
@@ -54,6 +58,7 @@ public class Abilities : MonoBehaviour
             SpawnEffect(earthEffectPrefab);
             // momo will get a shield for a few seconds
             isShielded = true;
+            AudioManager.Instance.PlaySFX("Earth Ability");
         }
     }
 
@@ -62,8 +67,9 @@ public class Abilities : MonoBehaviour
         if (context.performed && !isAbilityActive && (LevelHandler.Instance.level > 4 || isTestMode))
         {
             SpawnEffect(fireEffectPrefab);
-             // Momo will shoot out a fire explosion, this is to destroy the crystals on the boss level
+            // Momo will shoot out a fire explosion, this is to destroy the crystals on the boss level
             isFire = true;
+            AudioManager.Instance.PlaySFX("Fire Ability");
         }
     }
 
@@ -98,11 +104,12 @@ public class Abilities : MonoBehaviour
     private System.Collections.IEnumerator ResetAbility(float animationLength)
     {
         yield return new WaitForSeconds(animationLength);
-        if(!isAbilityActive) yield break;
+        if (!isAbilityActive) yield break;
         StopAbility();
     }
 
-    public void StopAbility(){
+    public void StopAbility()
+    {
         Destroy(effect);
         isAbilityActive = false;
         isFlying = false;
@@ -110,13 +117,16 @@ public class Abilities : MonoBehaviour
         isFire = false;
     }
 
-    public bool GetIsFlying(){
+    public bool GetIsFlying()
+    {
         return isFlying;
     }
-    public bool GetIsShielded(){
+    public bool GetIsShielded()
+    {
         return isShielded;
     }
-    public bool GetIsFire(){
+    public bool GetIsFire()
+    {
         return isFire;
     }
 }

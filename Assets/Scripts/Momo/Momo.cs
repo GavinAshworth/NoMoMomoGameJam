@@ -110,6 +110,7 @@ public class Momo : MonoBehaviour
         animator.SetFloat("InputY", moveDirection.y);
         animator.SetFloat("LastInputX", lastInputX);
         animator.SetFloat("LastInputY", lastInputY);
+        AudioManager.Instance.PlaySFX("Move");
     }
 
     private System.Collections.IEnumerator MoveToPosition(Vector2 target)
@@ -142,6 +143,7 @@ public class Momo : MonoBehaviour
     }
 
     public void Death(Vector2 target, int damage){
+        AudioManager.Instance.PlaySFX("Death");
         //God Mode for testing purposes
         if(isGodMode){
             return;
@@ -177,6 +179,7 @@ public class Momo : MonoBehaviour
 
     //Called when momo reaches a home
     private void ReachHome(Vector2 target){
+        AudioManager.Instance.PlaySFX("Checkpoint");
         StopAllCoroutines();    
         moveDirection = Vector2.zero;  //reset movement
         isMoving = true; // prevent movement bug
