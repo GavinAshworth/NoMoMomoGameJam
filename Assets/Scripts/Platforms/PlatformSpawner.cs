@@ -1,10 +1,11 @@
 using UnityEngine;
 using System.Collections;
+using System;
 public class PlatformSpawner : MonoBehaviour
 {
     [SerializeField] private Transform spawnPoint; // Spawn point for platforms
     [SerializeField] private Transform endPoint; // End point for platforms
-    [SerializeField] private float moveSpeed = 2f; // Speed of the platform
+    private float moveSpeed = 2.0f * Mathf.Pow(1.1f, LevelHandler.Instance.level - 1); // Speed of the platform
     [SerializeField] private int platformCount = 3; // Number of platforms to spawn
     [SerializeField] private bool isReverse;
     [SerializeField] bool isLong;
@@ -90,7 +91,7 @@ public class PlatformSpawner : MonoBehaviour
             index = (index + 1);
 
             // Wait for the specified spawn interval. We add in a little randomness to make level different every time
-            yield return new WaitForSeconds(spawnInterval + Random.Range(-0.25f, 0.25f));
+            yield return new WaitForSeconds(spawnInterval + UnityEngine.Random.Range(-0.25f, 0.25f));
         }
     }
 }

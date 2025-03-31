@@ -85,12 +85,7 @@ public class GameManager : MonoBehaviour
         GameManager.Instance.AddScore(300);
         level += 1;
         SceneHandler.Instance.LoadNextScene();
-        if (LevelHandler.Instance != null) {
-            LevelHandler.Instance.IncrementLevel();
-            SceneHandler.Instance.LoadNextScene();
-        } else {
-            Debug.LogError("LevelHandler not found!");
-        }
+        LevelHandler.Instance.IncrementLevel();
     }
 
     public void UnlockAbility(int ability){
