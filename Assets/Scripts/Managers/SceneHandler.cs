@@ -69,4 +69,8 @@ public class SceneHandler : SingletonMonoBehavior<SceneHandler>
         yield return new WaitForSeconds(5f);
         SceneManager.LoadScene(menuScene);
     }
+
+    public int GetLevel() {
+        return this.nextLevelIndex - 1;
+    }
 }
