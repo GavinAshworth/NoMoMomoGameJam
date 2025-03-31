@@ -74,7 +74,7 @@ Our game is inspired by **Frogger** but is themed around **Avatar: The Last Airb
   - Falling takes one life and resets to the start
 - **Level 5: Azula Boss Fight (Hardest)**
   - Fire and Lightning attacks that escalate in difficulty as you destroy the crystals in the boss fight
-  - Destroy Azula’s 5 healing crystals using Firebending
+  - Destroy Azula’s 4 healing crystals using Firebending
   - Falling takes one life and resets to the start
 
 ### Progression System
