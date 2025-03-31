@@ -15,14 +15,15 @@ public class SceneHandler : SingletonMonoBehavior<SceneHandler>
     [SerializeField] private Ease animationType;
     [SerializeField] private float animationDuration;
     [SerializeField] private RectTransform transitionCanvas;
-
     private int nextLevelIndex;
+    private string currentLevel;
     private float initXPosition;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected override void Awake()
     {
+        nextLevelIndex = 0;
         base.Awake();
         initXPosition = transitionCanvas.transform.localPosition.x;
         SceneManager.LoadScene(menuScene);
