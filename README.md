@@ -88,7 +88,7 @@ Our game is inspired by **Frogger** but is themed around **Avatar: The Last Airb
 
 ### Winning
 - Complete all levels without losing all lives.
-- Players can restart the final boss fight if they lose all lives.
+- Players can restart the final boss fight if they lose all lives (because the boss fight is fun).
 
 ### Score System
 - Points are awarded for:
@@ -98,21 +98,6 @@ Our game is inspired by **Frogger** but is themed around **Avatar: The Last Airb
   - Completing the game without losing lives
   - Finishing quickly
 
----
-
-## Timeline & Milestones
-
-### Week 1: Core Mechanics & Gameplay Elements
-- **Jimi**: Set up the Unity project, implement scoring system
-- **Gavin**: Create pixel art, develop basic UI
-- **Imoudu**: Implement player input, core mechanics, and collision-based damage
-- **All Members**: Design and build basic levels, implement elemental skill system
-
-### Week 2: Polish & Finalization
-- **Jimi**: Add particle and sound effects, create death screen
-- **Imoudu**: Implement the start screen
-- **Gavin**: Stylize levels, add animations, improve UI
-- **All Members**: Package and test the final build
 
 ---
 
