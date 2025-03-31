@@ -5,18 +5,19 @@ public class TimerBarUI : MonoBehaviour
 {
     [SerializeField] private Image timerFill;
     [SerializeField] private float totalTime = 60f;
-
+    private bool play;
     private float remainingTime;
 
     void Start()
     {
+        Play();
         remainingTime = totalTime;
         timerFill.fillAmount = 1f;
     }
 
     void Update()
     {
-        if (remainingTime > 0)
+        if (remainingTime > 0 && play)
         {
             remainingTime -= Time.deltaTime;
             float percent = remainingTime / totalTime;
@@ -40,5 +41,15 @@ public class TimerBarUI : MonoBehaviour
         if (this.remainingTime > this.totalTime) {
             this.remainingTime = this.totalTime;
         }
+    }
+
+    public void Play()
+    {
+        this.play = true;
+    }
+
+    public void Pause()
+    {
+        this.play = false;
     }
 }
