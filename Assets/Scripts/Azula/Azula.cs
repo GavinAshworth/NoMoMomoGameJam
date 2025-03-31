@@ -92,7 +92,8 @@ public class Azula : MonoBehaviour
                 yield return new WaitUntil(() => !isAttacking);
 
                 // Small break between attacks except for last one
-                if(attackCount != attacksPerCycle -1){
+                if (attackCount != attacksPerCycle - 1)
+                {
                     yield return new WaitForSeconds(timeBetweenAttacks);
                 }
             }
@@ -107,7 +108,7 @@ public class Azula : MonoBehaviour
     }
 
     // Animation Event - Lightning Strike
-        public void OnLightningStrike()
+    public void OnLightningStrike()
     {
         if (!isAlive || isHurt) return;
         Debug.Log("Lightning Strike Triggered!");
@@ -120,23 +121,26 @@ public class Azula : MonoBehaviour
     }
 
     private IEnumerator PerformLightningStrikes(int totalStrikes)
-{
-    for (int i = 0; i < totalStrikes; i++)
     {
-        // Calculate a random offset: -0.5 (left), 0 (center), or 0.5 (right)
-        float randomOffset = Random.Range(-1, 2) * 1f; //(makes it so the strikes are a little random and player has to react)
-        // First strike is always on top of player
-        if(i == 0){
-            randomOffset = 0f;
-        }
-        // Spawn a lightning strike with the random offset
-        Vector3 spawnPosition = momo.transform.position + new Vector3(randomOffset, 0, 0);
-        GameObject lightning = Instantiate(lightningPrefab, spawnPosition, Quaternion.identity);
+        for (int i = 0; i < totalStrikes; i++)
+        {
+            // Calculate a random offset: -0.5 (left), 0 (center), or 0.5 (right)
+            float randomOffset = Random.Range(-1, 2) * 1f; //(makes it so the strikes are a little random and player has to react)
+                                                           // First strike is always on top of player
+            if (i == 0)
+            {
+                randomOffset = 0f;
+            }
+            // Spawn a lightning strike with the random offset
+            Vector3 spawnPosition = momo.transform.position + new Vector3(randomOffset, 0, 0);
+            GameObject lightning = Instantiate(lightningPrefab, spawnPosition, Quaternion.identity);
 
-        // Wait for a short delay before the next strike
-        yield return new WaitForSeconds(0.5f);
+            // Wait for a short delay before the next strike
+            yield return new WaitForSeconds(0.5f);
+            AudioManager.Instance.PlaySFX("AzulaLightning");
+
+        }
     }
-}
 
 
     // Animation Event - Fire Barrage Event (Called 5 times)
@@ -187,6 +191,8 @@ public class Azula : MonoBehaviour
 
         AzulaFireBall fireballScript = fireball.GetComponent<AzulaFireBall>();
         fireballScript.Initialize(transform, direction, fireballSpeed);
+        AudioManager.Instance.PlaySFX("Azula Fireball");
+
     }
 
     // Animation Event - End Attack
@@ -218,9 +224,10 @@ public class Azula : MonoBehaviour
     public void TakeDamage()
     {
         lives--;
-        if(lives > 0){
-          anim.SetTrigger("Hurt");
-          anim.SetBool("IsResting", false);  
+        if (lives > 0)
+        {
+            anim.SetTrigger("Hurt");
+            anim.SetBool("IsResting", false);
         }
         isHurt = true;
 
