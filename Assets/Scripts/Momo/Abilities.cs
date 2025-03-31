@@ -1,10 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-// Class for our elemental abilities
 public class Abilities : MonoBehaviour
 {
-    //our elemental animations prefabs
     [Header("Ability Prefabs")]
     [SerializeField] private GameObject airEffectPrefab;
     [SerializeField] private GameObject waterEffectPrefab;
@@ -12,111 +10,122 @@ public class Abilities : MonoBehaviour
     [SerializeField] private GameObject fireEffectPrefab;
     [SerializeField] private bool isTestMode;
 
-    private GameObject effect;
+    [Header("Cooldown Durations (seconds)")]
+    [SerializeField] private float airCooldown = 5f;
+    [SerializeField] private float waterCooldown = 8f;
+    [SerializeField] private float earthCooldown = 10f;
+    [SerializeField] private float fireCooldown = 12f;
 
+    private float airCooldownTimer = 0f;
+    private float waterCooldownTimer = 0f;
+    private float earthCooldownTimer = 0f;
+    private float fireCooldownTimer = 0f;
+
+    private GameObject effect;
     private bool isFlying = false;
     private bool isShielded = false;
     private bool isFire = false;
-    private Momo momo; //Our momo script 
-    private bool isAbilityActive = false; // Flag to track if an ability is currently active
+    private bool isAbilityActive = false;
 
-    private void Start(){
+    [Header("UI Cooldown Fill Images")]
+    [SerializeField] private UnityEngine.UI.Image airCooldownImage;
+    [SerializeField] private UnityEngine.UI.Image waterCooldownImage;
+    [SerializeField] private UnityEngine.UI.Image earthCooldownImage;
+    [SerializeField] private UnityEngine.UI.Image fireCooldownImage;
+
+    private Momo momo;
+
+    private void Start() {
         momo = GetComponent<Momo>();
     }
-    
 
-    public void OnAirAbility(InputAction.CallbackContext context)
-    {
-        if(LevelHandler.Instance.level > 1 || isTestMode) {
-            if (context.performed && !isAbilityActive)
-            {
-                SpawnEffect(airEffectPrefab);
-                //  momo will speed up for a few seconds
-                isFlying = true;
-            }
+    private void Update() {
+        // Decrease cooldown timers each frame
+        airCooldownTimer -= Time.deltaTime;
+        waterCooldownTimer -= Time.deltaTime;
+        earthCooldownTimer -= Time.deltaTime;
+        fireCooldownTimer -= Time.deltaTime;
+
+         // Clamp to prevent negative timers
+        airCooldownTimer = Mathf.Max(airCooldownTimer, 0f);
+        waterCooldownTimer = Mathf.Max(waterCooldownTimer, 0f);
+        earthCooldownTimer = Mathf.Max(earthCooldownTimer, 0f);
+        fireCooldownTimer = Mathf.Max(fireCooldownTimer, 0f);
+
+        // Update UI fill amounts (0 = ready, 1 = cooling down)
+        airCooldownImage.fillAmount = 1f - (airCooldownTimer / airCooldown);
+        waterCooldownImage.fillAmount = 1f - (waterCooldownTimer / waterCooldown);
+        earthCooldownImage.fillAmount = 1f - (earthCooldownTimer / earthCooldown);
+        fireCooldownImage.fillAmount = 1f - (fireCooldownTimer / fireCooldown);
+    }
+
+
+    public void OnAirAbility(InputAction.CallbackContext context) {
+        if ((LevelHandler.Instance.level > 1 || isTestMode) && context.performed && !isAbilityActive && airCooldownTimer <= 0f) {
+            SpawnEffect(airEffectPrefab);
+            isFlying = true;
+            airCooldownTimer = airCooldown;
         }
     }
 
-    public void OnWaterAbility(InputAction.CallbackContext context)
-    {
-        if (context.performed && !isAbilityActive && (LevelHandler.Instance.level > 2 || isTestMode))
-        {
+    public void OnWaterAbility(InputAction.CallbackContext context) {
+        if ((LevelHandler.Instance.level > 2 || isTestMode) && context.performed && !isAbilityActive && waterCooldownTimer <= 0f) {
             SpawnEffect(waterEffectPrefab);
-             // momo regenerates 1 life
-             GameManager.Instance.Heal(); 
+            GameManager.Instance.Heal();
+            waterCooldownTimer = waterCooldown;
         }
     }
 
-    public void OnEarthAbility(InputAction.CallbackContext context)
-    {
-        if (context.performed && !isAbilityActive && (LevelHandler.Instance.level > 3 || isTestMode))
-        {
+    public void OnEarthAbility(InputAction.CallbackContext context) {
+        if ((LevelHandler.Instance.level > 3 || isTestMode) && context.performed && !isAbilityActive && earthCooldownTimer <= 0f) {
             SpawnEffect(earthEffectPrefab);
-            // momo will get a shield for a few seconds
             isShielded = true;
+            earthCooldownTimer = earthCooldown;
         }
     }
 
-    public void OnFireAbility(InputAction.CallbackContext context)
-    {
-        if (context.performed && !isAbilityActive && (LevelHandler.Instance.level > 4 || isTestMode))
-        {
+    public void OnFireAbility(InputAction.CallbackContext context) {
+        if ((LevelHandler.Instance.level > 4 || isTestMode) && context.performed && !isAbilityActive && fireCooldownTimer <= 0f) {
             SpawnEffect(fireEffectPrefab);
-             // Momo will shoot out a fire explosion, this is to destroy the crystals on the boss level
             isFire = true;
+            fireCooldownTimer = fireCooldown;
         }
     }
 
-    private void SpawnEffect(GameObject effectPrefab)
-    {
-        if (effectPrefab == null)
-        {
+    private void SpawnEffect(GameObject effectPrefab) {
+        if (effectPrefab == null) {
             Debug.LogError("Effect prefab is not assigned!");
             return;
         }
 
-        // Set the ability as active
         isAbilityActive = true;
 
-        // Instantiate the effect prefab as a child of Momo so we can make it follow him
         effect = Instantiate(effectPrefab, transform.position, Quaternion.identity, transform);
 
-        // Get the Animator component of the effect
         Animator effectAnimator = effect.GetComponent<Animator>();
-        if (effectAnimator != null)
-        {
-            // Play the animation
+        if (effectAnimator != null) {
             effectAnimator.Play(0, 0, 0f);
         }
 
-        // Destroy the effect after the animation finishes
         float animationLength = effectAnimator.GetCurrentAnimatorStateInfo(0).length;
-        // Reset the ability flag after the animation finishes
         StartCoroutine(ResetAbility(animationLength));
     }
 
-    private System.Collections.IEnumerator ResetAbility(float animationLength)
-    {
+    private System.Collections.IEnumerator ResetAbility(float animationLength) {
         yield return new WaitForSeconds(animationLength);
-        if(!isAbilityActive) yield break;
+        if (!isAbilityActive) yield break;
         StopAbility();
     }
 
-    public void StopAbility(){
-        Destroy(effect);
+    public void StopAbility() {
+        if (effect != null) Destroy(effect);
         isAbilityActive = false;
         isFlying = false;
         isShielded = false;
         isFire = false;
     }
 
-    public bool GetIsFlying(){
-        return isFlying;
-    }
-    public bool GetIsShielded(){
-        return isShielded;
-    }
-    public bool GetIsFire(){
-        return isFire;
-    }
+    public bool GetIsFlying() => isFlying;
+    public bool GetIsShielded() => isShielded;
+    public bool GetIsFire() => isFire;
 }
