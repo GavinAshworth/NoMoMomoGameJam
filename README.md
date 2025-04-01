@@ -111,6 +111,11 @@ Our game is inspired by **Frogger** but is themed around **Avatar: The Last Airb
 - Sourced from:
   - [Zapsplat](https://www.zapsplat.com/) (Sound FX)
 
+### Playthrough
+
+https://github.com/user-attachments/assets/37ec5209-e15d-441c-b89e-2c4b13f86671
+
+
 
 ### UI
 - Font: [Press Start 2P](https://www.fontspace.com/press-start-2p-font-f11591)
