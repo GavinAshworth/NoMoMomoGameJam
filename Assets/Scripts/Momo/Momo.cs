@@ -23,6 +23,7 @@ public class Momo : MonoBehaviour
     private Abilities abilities;
     private int numberAtHome = 0; // keep track of how many checkpoints have been reached
     public TimerBarUI timerBarUI;
+    private Collider2D myCollider2D;
 
     private void Start()
     {
@@ -30,6 +31,7 @@ public class Momo : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         abilities = GetComponent<Abilities>();
+        myCollider2D = GetComponent<Collider2D>(); 
         constMoveTime = moveTime;
     }
 
@@ -258,4 +260,7 @@ public class Momo : MonoBehaviour
             return;
         }
     }
+    
+
+
 }
