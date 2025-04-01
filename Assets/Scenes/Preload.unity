@@ -527,6 +527,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 6c927250d468d4cdea79c8850d90ee59, type: 3}
   - name: AzulaLightning
     clip: {fileID: 8300000, guid: de48178fc72434b468e1469cdd566916, type: 3}
+  - name: CrystalBreak
+    clip: {fileID: 8300000, guid: 4893a653d23d147bdaf2f60315cb6bee, type: 3}
   musicSource: {fileID: 589083788}
   sfxSource: {fileID: 1329959621}
 --- !u!1 &1329959620
@@ -559,7 +561,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.754
   m_Pitch: 1
   Loop: 0
   Mute: 0

@@ -107,10 +107,12 @@ Our game is inspired by **Frogger** but is themed around **Avatar: The Last Airb
 - Custom-made pixel art by **Gavin Ashworth**
 
 ### Sound & Music
-- Potential sources:
+- Sourced from:
   - [Zapsplat](https://www.zapsplat.com/) (Sound FX)
-  - [OpenGameArt](https://opengameart.org/) (Sound FX and Music)
-  - [99Sounds](https://99sounds.org/) (Ambient sounds, UI sounds)
+
 
 ### UI
 - Font: [Press Start 2P](https://www.fontspace.com/press-start-2p-font-f11591)
+
+## Feedback / Playtesting
+Feedback results can be found ![here](https://github.com/GavinAshworth/NoMoMomoGameJam/blob/main/FEEDBACK.md)

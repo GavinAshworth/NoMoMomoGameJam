@@ -24,6 +24,7 @@ public class Crystal : MonoBehaviour
             azula.TakeDamage();
             //Set is broken to true so we cant retrigger this
             isBroken = true;
+            AudioManager.Instance.PlaySFX("CrystalBreak");
         }
     }
 }
