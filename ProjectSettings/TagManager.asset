@@ -10,6 +10,13 @@ TagManager:
   - Earth Ability
   - Azula
   - Peach
+  - Platform
+  - HealthBar
+  - ScoreText
+  - finalScoreText
+  - TimerBar
+  - HealthUI
+  - GameOverPanel
   layers:
   - Default
   - TransparentFX

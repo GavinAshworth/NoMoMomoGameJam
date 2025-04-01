@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 2048187}
   m_Layer: 5
   m_Name: ScoreValue
-  m_TagString: Untagged
+  m_TagString: ScoreText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1642,7 +1642,7 @@ GameObject:
   - component: {fileID: 308979003}
   m_Layer: 5
   m_Name: HealthBar
-  m_TagString: Untagged
+  m_TagString: HealthUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2179,7 +2179,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 690677772}
-  - component: {fileID: 690677771}
   m_Layer: 0
   m_Name: UIRoot
   m_TagString: Untagged
@@ -2187,18 +2186,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &690677771
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 690677770}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6adb80e9060df7a4d9228e7910166960, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &690677772
 Transform:
   m_ObjectHideFlags: 0
@@ -2228,7 +2215,7 @@ GameObject:
   - component: {fileID: 710358913}
   m_Layer: 5
   m_Name: TimerBar
-  m_TagString: Untagged
+  m_TagString: TimerBar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2298,10 +2285,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverPopup: {fileID: 1188422043}
   momo: {fileID: 7680321247040749206}
-  scoreText: {fileID: 223065634}
-  timerBarUI: {fileID: 710358913}
-  finalScoreText: {fileID: 1679349245}
-  healthUI: {fileID: 308979003}
 --- !u!4 &747848448
 Transform:
   m_ObjectHideFlags: 0
@@ -2617,6 +2600,8 @@ GameObject:
   - component: {fileID: 861361270}
   - component: {fileID: 861361269}
   - component: {fileID: 861361268}
+  - component: {fileID: 861361271}
+  - component: {fileID: 861361272}
   m_Layer: 5
   m_Name: MenuButton
   m_TagString: Untagged
@@ -2687,19 +2672,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 861361269}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: LoadStartScene
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &861361269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2738,6 +2711,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 861361266}
   m_CullTransparentMesh: 1
+--- !u!114 &861361271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861361266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b8737f6732feb645bc8650224fc4400, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverScale: 1.1
+  scaleSpeed: 5
+--- !u!114 &861361272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861361266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d44965cb14d2e8d418a41c1ec1e960e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &922984010
 GameObject:
   m_ObjectHideFlags: 0
@@ -7009,11 +7008,11 @@ GameObject:
   - component: {fileID: 1188422045}
   m_Layer: 5
   m_Name: GameOverPanel
-  m_TagString: Untagged
+  m_TagString: GameOverPanel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1188422044
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8591,6 +8590,8 @@ GameObject:
   - component: {fileID: 1354458805}
   - component: {fileID: 1354458804}
   - component: {fileID: 1354458803}
+  - component: {fileID: 1354458806}
+  - component: {fileID: 1354458807}
   m_Layer: 5
   m_Name: NewGameButton
   m_TagString: Untagged
@@ -8661,19 +8662,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1354458804}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: NewGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1354458804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8712,6 +8701,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1354458801}
   m_CullTransparentMesh: 1
+--- !u!114 &1354458806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1354458801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b8737f6732feb645bc8650224fc4400, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverScale: 1.1
+  scaleSpeed: 5
+--- !u!114 &1354458807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1354458801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18d2bba0fe0c1ca40a0515212a90f859, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1402767790
 GameObject:
   m_ObjectHideFlags: 0
@@ -9562,7 +9577,7 @@ GameObject:
   - component: {fileID: 1679349245}
   m_Layer: 5
   m_Name: FinalScoreValue
-  m_TagString: Untagged
+  m_TagString: finalScoreText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10059,6 +10074,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4603748375538617035, guid: 77502349c8f9b07489a5ce5bac229c7e, type: 3}
+      propertyPath: airCooldownImage
+      value: 
+      objectReference: {fileID: 1860807027}
+    - target: {fileID: -4603748375538617035, guid: 77502349c8f9b07489a5ce5bac229c7e, type: 3}
+      propertyPath: fireCooldownImage
+      value: 
+      objectReference: {fileID: 763435992}
+    - target: {fileID: -4603748375538617035, guid: 77502349c8f9b07489a5ce5bac229c7e, type: 3}
+      propertyPath: earthCooldownImage
+      value: 
+      objectReference: {fileID: 1152511686}
+    - target: {fileID: -4603748375538617035, guid: 77502349c8f9b07489a5ce5bac229c7e, type: 3}
+      propertyPath: waterCooldownImage
+      value: 
+      objectReference: {fileID: 224397111}
     - target: {fileID: 1652529745256764096, guid: 77502349c8f9b07489a5ce5bac229c7e, type: 3}
       propertyPath: m_Name
       value: Momo

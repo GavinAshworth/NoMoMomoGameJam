@@ -150,10 +150,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverPopup: {fileID: 1353767875}
   momo: {fileID: 1346552809}
-  scoreText: {fileID: 1974129333}
-  timerBarUI: {fileID: 1042133201}
-  finalScoreText: {fileID: 413320301}
-  healthUI: {fileID: 1872009502}
 --- !u!4 &7222003
 Transform:
   m_ObjectHideFlags: 0
@@ -1942,6 +1938,7 @@ GameObject:
   - component: {fileID: 277151239}
   - component: {fileID: 277151238}
   - component: {fileID: 277151241}
+  - component: {fileID: 277151242}
   m_Layer: 5
   m_Name: MenuButton
   m_TagString: Untagged
@@ -2012,19 +2009,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 277151239}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7222002}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: LoadStartScene
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &277151239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2077,6 +2062,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hoverScale: 1.1
   scaleSpeed: 5
+--- !u!114 &277151242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 277151236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d44965cb14d2e8d418a41c1ec1e960e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &303814329
 GameObject:
   m_ObjectHideFlags: 0
@@ -2164,7 +2161,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 316360790}
-  - component: {fileID: 316360789}
   m_Layer: 0
   m_Name: UIRoot
   m_TagString: Untagged
@@ -2172,18 +2168,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &316360789
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 316360788}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6adb80e9060df7a4d9228e7910166960, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &316360790
 Transform:
   m_ObjectHideFlags: 0
@@ -2351,7 +2335,7 @@ GameObject:
   - component: {fileID: 413320301}
   m_Layer: 5
   m_Name: FinalScoreValue
-  m_TagString: Untagged
+  m_TagString: finalScoreText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3126,6 +3110,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 316360790}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &809088022
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4091421441549920586, guid: 1d17069e7a6625e41b66be1481f51ac4, type: 3}
+      propertyPath: m_Name
+      value: Fire Projectile Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 7308682870035981911, guid: 1d17069e7a6625e41b66be1481f51ac4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.4987129
+      objectReference: {fileID: 0}
+    - target: {fileID: 7308682870035981911, guid: 1d17069e7a6625e41b66be1481f51ac4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -6.0622597
+      objectReference: {fileID: 0}
+    - target: {fileID: 7308682870035981911, guid: 1d17069e7a6625e41b66be1481f51ac4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7308682870035981911, guid: 1d17069e7a6625e41b66be1481f51ac4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7308682870035981911, guid: 1d17069e7a6625e41b66be1481f51ac4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7308682870035981911, guid: 1d17069e7a6625e41b66be1481f51ac4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7308682870035981911, guid: 1d17069e7a6625e41b66be1481f51ac4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7308682870035981911, guid: 1d17069e7a6625e41b66be1481f51ac4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7308682870035981911, guid: 1d17069e7a6625e41b66be1481f51ac4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7308682870035981911, guid: 1d17069e7a6625e41b66be1481f51ac4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1d17069e7a6625e41b66be1481f51ac4, type: 3}
 --- !u!1 &840327933
 GameObject:
   m_ObjectHideFlags: 0
@@ -3914,7 +3955,7 @@ GameObject:
   - component: {fileID: 1042133201}
   m_Layer: 5
   m_Name: TimerBar
-  m_TagString: Untagged
+  m_TagString: TimerBar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8025,11 +8066,11 @@ GameObject:
   - component: {fileID: 1353767877}
   m_Layer: 5
   m_Name: GameOverPanel
-  m_TagString: Untagged
+  m_TagString: GameOverPanel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1353767876
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8306,6 +8347,7 @@ GameObject:
   - component: {fileID: 1700299659}
   - component: {fileID: 1700299658}
   - component: {fileID: 1700299661}
+  - component: {fileID: 1700299662}
   m_Layer: 5
   m_Name: NewGameButton
   m_TagString: Untagged
@@ -8376,19 +8418,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1700299659}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7222002}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: NewGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1700299659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8441,6 +8471,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hoverScale: 1.1
   scaleSpeed: 5
+--- !u!114 &1700299662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700299656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18d2bba0fe0c1ca40a0515212a90f859, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1764111570
 GameObject:
   m_ObjectHideFlags: 0
@@ -8605,7 +8647,7 @@ GameObject:
   - component: {fileID: 1872009502}
   m_Layer: 5
   m_Name: HealthBar
-  m_TagString: Untagged
+  m_TagString: HealthUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8778,7 +8820,7 @@ GameObject:
   - component: {fileID: 1974129333}
   m_Layer: 5
   m_Name: ScoreValue
-  m_TagString: Untagged
+  m_TagString: ScoreText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9213,3 +9255,4 @@ SceneRoots:
   - {fileID: 7222003}
   - {fileID: 316360790}
   - {fileID: 2865591741284867728}
+  - {fileID: 809088022}
