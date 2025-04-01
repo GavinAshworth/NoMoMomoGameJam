@@ -9,6 +9,7 @@ TagManager:
   - Fire Ability
   - Earth Ability
   - Azula
+  - Peach
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - Projectile
   - DeathWall
   - CantGoHere
-  - 
+  - Consumable
   - 
   - 
   - 
