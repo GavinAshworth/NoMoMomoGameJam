@@ -2296,12 +2296,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65fde73345ad849eabaedc19cea2d8f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOverPopup: {fileID: 0}
+  gameOverPopup: {fileID: 1188422043}
   momo: {fileID: 7680321247040749206}
-  scoreText: {fileID: 0}
-  timerBarUI: {fileID: 0}
-  finalScoreText: {fileID: 0}
-  healthUI: {fileID: 0}
+  scoreText: {fileID: 223065634}
+  timerBarUI: {fileID: 710358913}
+  finalScoreText: {fileID: 1679349245}
+  healthUI: {fileID: 308979003}
 --- !u!4 &747848448
 Transform:
   m_ObjectHideFlags: 0
