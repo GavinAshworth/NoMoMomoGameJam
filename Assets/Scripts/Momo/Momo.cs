@@ -185,9 +185,7 @@ public class Momo : MonoBehaviour
         isMoving = true; // prevent movement bug
         animator.SetBool("isJumping", false); //exit jump animation
         transform.SetParent(null);
-        GameManager.Instance.AddScore(300);
-        // timerBarUI.addTime(10);
-        // Debug.Log("Time: " + timerBarUI.getTime());
+        GameManager.Instance.MadeItHome();
 
         //set Home Sprite to the location
 

@@ -226,6 +226,7 @@ public class Azula : MonoBehaviour
         lives--;
         if (lives > 0)
         {
+            GameManager.Instance.AddScore(500);
             anim.SetTrigger("Hurt");
             anim.SetBool("IsResting", false);
         }
@@ -233,6 +234,7 @@ public class Azula : MonoBehaviour
 
         if (lives <= 0)
         {
+            GameManager.Instance.AddScore(3000);
             isAlive = false;
             anim.SetTrigger("Death");
             StopAllCoroutines();

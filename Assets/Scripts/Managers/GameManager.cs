@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
         if (timerBarUI != null && timerBarUI.getTime() <= 0f)
         {
             HasDied(1);
-            // GameOver();
+            timerBarUI.ResetTimer();
         }
     }
 
@@ -88,6 +88,7 @@ public class GameManager : MonoBehaviour
         //Called when Momo hits a checkpoint 
         GameManager.Instance.AddScore(300);
         level += 1;
+        timerBarUI.ResetTimer();
         SceneHandler.Instance.LoadNextScene();
         LevelHandler.Instance.IncrementLevel();
     }
@@ -166,5 +167,11 @@ public class GameManager : MonoBehaviour
     {
         gameOverPopup.SetActive(false);
         SceneHandler.Instance.LoadMenuScene();
+    }
+
+    public void MadeItHome() 
+    {
+        AddScore(300);
+        timerBarUI.AddTime(15f);
     }
 }

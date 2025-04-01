@@ -35,7 +35,7 @@ public class TimerBarUI : MonoBehaviour
         return this.remainingTime;
     }
 
-    public void addTime(float time) {
+    public void AddTime(float time) {
         this.remainingTime += time;
 
         if (this.remainingTime > this.totalTime) {
