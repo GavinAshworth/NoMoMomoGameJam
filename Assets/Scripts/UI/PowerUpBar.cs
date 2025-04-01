@@ -14,6 +14,26 @@ public class PowerUpBar : MonoBehaviour
         // Show unlocked power-ups based on player's progress
         int levelsCompleted = SceneHandler.Instance.GetLevel();
 
+        Debug.Log("level" + levelsCompleted);
+
+        levelsCompleted = levelsCompleted > 4 ? 4 : levelsCompleted;
+
+        if (levelsCompleted < 0) {
+            return;
+        }
+
+        for (int i = 0; i < levelsCompleted && i < powerUpIcons.Length; i++)
+        {
+            powerUpIcons[i].SetActive(true);
+        }
+    }
+
+    void Update()
+    {
+        int levelsCompleted = SceneHandler.Instance.GetLevel();
+
+        Debug.Log("level" + levelsCompleted);
+
         levelsCompleted = levelsCompleted > 4 ? 4 : levelsCompleted;
 
         if (levelsCompleted < 0) {
