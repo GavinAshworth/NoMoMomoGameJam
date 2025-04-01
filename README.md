@@ -95,6 +95,7 @@ Our game is inspired by **Frogger** but is themed around **Avatar: The Last Airb
   - Vertical progress
   - Reaching homes
   - Defeating Azula
+  - Bonus Peach on each map for 1000 points
   - Completing the game without losing lives
   - Finishing quickly
 
