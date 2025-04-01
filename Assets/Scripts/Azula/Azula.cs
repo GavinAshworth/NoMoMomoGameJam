@@ -19,7 +19,8 @@ public class Azula : MonoBehaviour
     [SerializeField] float fireballSpeed = 5f;
     private bool isAttacking;
     private int attackCount = 0;
-
+    private Momo momoScript;
+    private bool isMomoDead;
     // Attack cycle settings
     [SerializeField] private int attacksPerCycle = 5;
     [SerializeField] private float timeBetweenAttacks = 2f;
@@ -28,7 +29,7 @@ public class Azula : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
-
+        momoScript = momo.GetComponent<Momo>();
         // Initialize fireball pool
         for (int i = 0; i < poolSize; i++)
         {
@@ -54,6 +55,13 @@ public class Azula : MonoBehaviour
                 ResetFireball(fireball);
             }
         }
+
+        if (momoScript != null && momoScript.getIsDead()) 
+        {
+                isMomoDead = true;
+        }else{
+            isMomoDead = false;
+        }
     }
 
     private IEnumerator BossBehavior()
@@ -64,6 +72,11 @@ public class Azula : MonoBehaviour
             while (isHurt)
             {
                 yield return null;
+            }
+
+            if (isMomoDead) 
+            {
+                yield return null; // Skip attack if Momo is dead
             }
 
             //increase boss difficulty
