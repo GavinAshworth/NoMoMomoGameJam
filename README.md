@@ -112,8 +112,14 @@ Our game is inspired by **Frogger** but is themed around **Avatar: The Last Airb
   - [Zapsplat](https://www.zapsplat.com/) (Sound FX)
 
 ### Playthrough
-
+- Regular Level
 https://github.com/user-attachments/assets/37ec5209-e15d-441c-b89e-2c4b13f86671
+
+- Boss Level
+
+
+
+https://github.com/user-attachments/assets/a637c5ce-00eb-4a6a-9f4a-dbe12dfb6437
 
 
 
