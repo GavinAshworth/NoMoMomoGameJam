@@ -226,7 +226,8 @@ public class Azula : MonoBehaviour
         lives--;
         if (lives > 0)
         {
-            GameManager.Instance.AddScore(500);
+            GameManager.Instance.AddScore(200);
+            GameManager.Instance.MadeItHome();  // so the user gets more time and a total of 500 points
             anim.SetTrigger("Hurt");
             anim.SetBool("IsResting", false);
         }

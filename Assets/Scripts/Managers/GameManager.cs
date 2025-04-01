@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] public float timeLimit { get; private set; } = 60f;
     public TimerBarUI timerBarUI;
 
+    [SerializeField] private TMPro.TMP_Text finalScoreText;
+
     //for managing the health bar
     [SerializeField] private HealthUI healthUI;
 
@@ -105,6 +107,11 @@ public class GameManager : MonoBehaviour
         if (scoreText != null)
         {
             scoreText.text = score.ToString("D5"); // Displays like "Score: 00025"
+        }
+
+        if (finalScoreText != null)
+        {
+            finalScoreText.text = score.ToString("D5");
         }
     }
 
