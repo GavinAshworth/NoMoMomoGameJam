@@ -11,10 +11,10 @@ public class Abilities : MonoBehaviour
     [SerializeField] private bool isTestMode;
 
     [Header("Cooldown Durations (seconds)")]
-    [SerializeField] private float airCooldown = 5f;
-    [SerializeField] private float waterCooldown = 8f;
-    [SerializeField] private float earthCooldown = 10f;
-    [SerializeField] private float fireCooldown = 12f;
+    private float airCooldown = 3f;
+    private float waterCooldown = 7f;
+    private float earthCooldown = 5f;
+    private float fireCooldown = 12f;
 
     private float airCooldownTimer = 0f;
     private float waterCooldownTimer = 0f;

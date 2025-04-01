@@ -245,6 +245,10 @@ public class Momo : MonoBehaviour
         isDead = false;
     }
 
+    public bool getIsDead(){
+        return isDead;
+    }
+
      private void OnTriggerEnter2D(Collider2D collision){
         //This is for when momo gets hit by a projectile
         bool isProjectile = collision.gameObject.layer == LayerMask.NameToLayer("Projectile");
